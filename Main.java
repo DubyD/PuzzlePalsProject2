@@ -12,7 +12,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage){
 
-        GameMenu hud = new GameMenu();
+        MenuGui hud = new MenuGui();
         Scene guiComponents = new Scene(hud.getMenu(), 400, 400);
 
         primaryStage.setTitle("Rock Game");
