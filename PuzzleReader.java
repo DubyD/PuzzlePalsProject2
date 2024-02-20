@@ -7,9 +7,9 @@ public class PuzzleReader {
     private File csvFile;
     private Scanner csvScanner;
     public PuzzleReader(){
-        csvFilePath="./Rolodex.csv";
-        csvFile= new File(csvFilePath);
-        csvScanner=new Scanner(csvFile);
+        this.csvFilePath="./Rolodex.csv";
+        this.csvFile= new File(csvFilePath);
+        this.csvScanner=new Scanner(csvFile);
     }
     public static Puzzle readCSV(puzInput){
 
