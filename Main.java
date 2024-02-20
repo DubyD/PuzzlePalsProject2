@@ -12,10 +12,10 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage){
 
-        MenuGui hud = new MenuGui();
+        SceneSetter hud = new SceneSetter();
         Scene guiComponents = new Scene(hud.getMenu(), 400, 400);
 
-        primaryStage.setTitle("Rock Game");
+        primaryStage.setTitle("PuzzlePals");
         primaryStage.setScene(guiComponents);
         primaryStage.show();
     }

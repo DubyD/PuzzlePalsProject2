@@ -6,28 +6,21 @@ import javafx.scene.control.Label;
 public class GameCell {
 
     private String cellState;
-    private Label pieceLabel;
     private boolean isHeader;
-    private PuzzleTable puzzleSection;
     private int row;
     private int column;
-    public GameCell(PuzzleTable parent, int row, int column){
+    public GameCell(, int row, int column){
 
-            //Allows easy access to which state the cell is currently in while switching
-            //through it's cycle of states
+            //
         this.cellState = "";
-        this.pieceLabel = new Label();
         this.isHeader = false;
-
-            //For reference to adjust the objects in other grid spaces
-        this.puzzleSection = parent;
 
             //To identify which spaces need to be adjusted
         this.row = row;
         this.column = column;
 
             //Creates a rotating state of values to play the game with.
-        this.pieceLabel.setOnMouseClicked(event -> {
+        /*this.pieceLabel.setOnMouseClicked(event -> {
             if(this.cellState.equals("")){
                 this.cellState = "X";
                 this.pieceLabel.setText(this.cellState);
@@ -52,14 +45,14 @@ public class GameCell {
                     }
                 }
                     //Updates the Board to fill in 'X's into rows and columns
-                this.puzzleSection.updatePuzzle(updating, this.puzzleSection.getRowHeader(), this.puzzleSection.getColumnHeader());
+                this.puzzleSection.updatePuzzle(updating);
 
 
             }else if(this.cellState.equals("O")){
                 this.cellState = "";
                 this.pieceLabel.setText(this.cellState);
             }
-        });
+        });*/
     }
 
         //The second constructor is for headers of rows and columns, separating them
@@ -69,8 +62,7 @@ public class GameCell {
             //This will make it easier to identify clickable from
             // un-clickable cells from the backend
         this.isHeader = true;
-        this.cellState = "";
-        this.pieceLabel = new Label(header);
+        this.cellState = header;
     }
 
         //Used to update PuzzleSection
@@ -91,6 +83,7 @@ public class GameCell {
             //checks the CellType so that Headers keep their values
         if(this.getCellType() == false) {
             this.pieceLabel.setText(update);
+            this.cellState = update;
         }
     }
 
@@ -101,6 +94,14 @@ public class GameCell {
         if(this.getCellType() == true){
             this.pieceLabel.setText(header);
         }
+    }
+
+        //Added to make this a more complete class
+    @Override
+    public String toString(){
+        String reply = "this is a tableview element, a basic piece of the Puzzle game.\n"+
+                       "It's coordinates in the Table are: " + this.row +"x"+ this.column;
+        return reply;
     }
 
 

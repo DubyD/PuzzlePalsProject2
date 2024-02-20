@@ -29,8 +29,8 @@ public class PuzzleTable {
     }
 
         //Used for Creating and updating the Puzzle
-    public void updatePuzzle(GameCell[][] update, boolean hasColumnHeaders, boolean hasRowHeaders){
-
+    public void updatePuzzle(GameCell[][] update){
+        this.puzzlePiece = update;
     }
 
         //Used for updating the Puzzle
