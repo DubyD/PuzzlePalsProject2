@@ -5,7 +5,7 @@ public class PuzzleReader {
     private File csvFile;
     private Scanner csvScanner;
     public PuzzleReader(){
-        csvFilePath="";
+        csvFilePath="./Rolodex.csv";
         csvFile= new File(csvFilePath);
         csvScanner=new Scanner(csvFile);
     }
