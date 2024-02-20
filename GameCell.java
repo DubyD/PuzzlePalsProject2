@@ -94,6 +94,15 @@ public class GameCell {
         }
     }
 
+        //Used in Puzzle Table
+    public void setHeader(String header){
+
+            //Used to set Headers of a Puzzle
+        if(this.getCellType() == true){
+            this.pieceLabel.setText(header);
+        }
+    }
+
 
 //WD--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

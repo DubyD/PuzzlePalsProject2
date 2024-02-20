@@ -1,6 +1,8 @@
 //Author: WD
 //WD---vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 import javafx.scene.control.TableView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PuzzleTable {
     private GameCell[][] puzzlePiece;
