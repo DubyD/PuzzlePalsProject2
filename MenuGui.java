@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
+import java.util.ArrayList;
 
 
 
@@ -62,19 +63,24 @@ public class MenuGui {
         ObservableList<String> options = FXCollections.observableArrayList();
 
             //HardWired options. May change later once PuzzleReader is complete
-        options.add("3x2");
-        options.add("3x3");
+        List<String> puzzleSizes = PuzzleReader.getAllSizes();
+        while(puzzleSizes.isEmpty() == false){
+            String x = puzzleSizes.get(0);
+            options.add(x);
+            puzzleSizes.remove(x);
+        }
         this.puzzleSelection.setItems(options);
     }
 
-    public String selectedItem(){
-        String reply = this.puzzleSelection.getSelected();
-        return reply;
+    public String getSelectedItem(){
+        return this.puzzleSelection.getValue();
     }
+
         //Sends a Button Pointer to apply a Lambda function to the Menu's button
-    public Button getButton(){
+    public Button getStartButton(){
         return this.startButton;
     }
+
         //Sends the Menu Gui to be added to the Stage
     public VBox getMenu(){
         return this.menuOption;
