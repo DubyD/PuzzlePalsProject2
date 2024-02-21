@@ -9,9 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
-import java.util.ArrayList;
-
-
+import java.util.List;
 
 public class MenuGui {
 
@@ -62,8 +60,11 @@ public class MenuGui {
             //Setting up the DropBox options
         ObservableList<String> options = FXCollections.observableArrayList();
 
-            //HardWired options. May change later once PuzzleReader is complete
+            //PuzzleReader static method to retrieve all sizes from .csv file
         List<String> puzzleSizes = PuzzleReader.getAllSizes();
+
+            //Loops through the List until it is empty
+            //Sizes are number of matching catagories x items in catagories
         while(puzzleSizes.isEmpty() == false){
             String x = puzzleSizes.get(0);
             options.add(x);

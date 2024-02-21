@@ -32,12 +32,9 @@ public class Board {
     private List<HBox> puzzleSectionRows;
 
         //Used to format which size puzzle the user would like to play
-    private String puzzleSize;
+
 
     public Board(String puzzleSize){
-
-            //Getting the parameters out of the way
-        this.puzzleSize = puzzleSize;
 
             //Setting up the GameScene to be exported
         this.gameBoard = new VBox();
@@ -63,6 +60,7 @@ public class Board {
         this.clueArea = new TextArea();
 
         this.puzzleSectionRows = new ArrayList<HBox>();
+        this.setPuzzleSize(puzzleSize);
 
 
             //Filling the first Row of the Scene
@@ -85,6 +83,7 @@ public class Board {
     private void setSectionRows(int x){
 
             //Sets up how many Section Rows the Board needs
+            //Sizes are number of matching catagories x items in catagories
         while(x > 0){
             HBox row = new HBox();
             this.puzzleSectionRows.getChildren().add(row);
@@ -92,8 +91,11 @@ public class Board {
         }
     }
 
-    public void setPuzzleSize(List<> puzzlePieces){
-
+    public void setPuzzleSize(String size){
+        String[] pieces = size.split("");
+        int x = Integer.parseInt(pieces[0]);
+        x = x - 1;
+        this.setSectionRows(x);
     }
 
         //Exports Button for Lambda function
