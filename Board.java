@@ -108,4 +108,10 @@ public class Board {
         return this.gameBoard;
     }
 
+    @Override
+    public String toString(){
+        String reply = "This is a Gui for an initialized Version of the Game.";
+        return reply;
+    }
+
 }

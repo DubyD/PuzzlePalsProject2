@@ -87,4 +87,10 @@ public class MenuGui {
         return this.menuOption;
     }
 
+    @Override
+    public String toString(){
+        String reply = "This is a Main Menu for the Game";
+        return reply;
+    }
+
 }

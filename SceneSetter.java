@@ -45,7 +45,7 @@ public class SceneSetter {
         //Creates a new iteration of GameScene every time the StartButton is pressed
     private void showGame(String puzzleSize){
 
-            // creating custom settings of gameMenu components
+            // creating a New custom settings of gameMenu components
             // creating a pointer to one of the VBox's children (Button)
             // for desired results when clicked
         Board gameBoard = new Board(puzzleSize);
@@ -60,6 +60,12 @@ public class SceneSetter {
 
         primaryStage.setScene(this.menuScene);
 
+    }
+
+    @Override
+    public String toString(){
+        String reply = "This is a SwitchBoard for tranversing between a game and a game menu";
+        return reply;
     }
 
 }
