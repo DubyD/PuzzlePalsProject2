@@ -31,7 +31,13 @@ public class Board {
         //based on the size of the puzzle
     private List<HBox> puzzleSectionRows;
 
-        //Used to format which size puzzle the user would like to play
+    private HBox rowThree;
+    private HBox hintRow;
+    private HBox checkRow;
+    private Label hintLabel;
+    private Button hintButton;
+    private Label checkLabel;
+    private Button checkButton;
 
 
     public Board(String puzzleSize){
@@ -44,7 +50,7 @@ public class Board {
         this.endZone = new HBox();
         this.endZone.setAlignment(Pos.CENTER);
             //eject button and Label
-        this.endButtonInfo = new Label("End Game or new Game")
+        this.endButtonInfo = new Label("End Game or new Game");
         this.endButton = new Button("EmergencyExit");
 
 
@@ -59,9 +65,25 @@ public class Board {
             //Goes next to the puzzleFormatting
         this.clueArea = new TextArea();
 
+            //Formats the Puzzle Space
         this.puzzleSectionRows = new ArrayList<HBox>();
         this.setPuzzleSize(puzzleSize);
 
+            //Third row formatting
+        this.rowThree = new HBox();
+        this.rowThree.setAlignment(Pos.CENTER);
+
+            //Leftside of third row
+        this.checkRow = new HBox();
+        this.checkRow.setAlignment(Pos.CENTER);
+        this.checkLabel = new Label("Do you want to check your answers?");
+        this.checkButton = new Button("Check Answers");
+
+            //Rightside of third row
+        this.hintRow = new HBox();
+        this.hintRow.setAlignment(Pos.CENTER);
+        this.hintLabel = new Label("Do you need a hint?");
+        this.hintButton = new Button("'Hint'");
 
             //Filling the first Row of the Scene
         this.endZone.getChildren().add(this.endButtonInfo);
@@ -71,11 +93,20 @@ public class Board {
         this.mainFormatting.getChildren().add(this.puzzleFormatting);
         this.mainFormatting.getChildren().add(this.clueArea);
 
+            //Filling the third Row of the Scene
+        this.checkRow.getChildren().add(this.checkLabel);
+        this.checkRow.getChildren().add(this.checkButton);
+        this.hintRow.getChildren().add(this.hintLabel);
+        this.hintRow.getChildren().add(this.hintButton);
+        this.rowThree.getChildren().add(this.checkRow);
+        this.rowThree.getChildren().add(this.hintRow);
+
             //First Row of the Scene
         this.gameBoard.getChildren().add(this.endZone);
             //Second Row of the Scene
         this.gameBoard.getChildren().add(this.mainFormatting);
-
+            //Third Row of the Scene
+        this.gameBoard.getChildren().add(this.rowThree);
 
     }
 
@@ -101,6 +132,10 @@ public class Board {
         //Exports Button for Lambda function
     public Button getEndButton(){
         return this.endButton;
+    }
+
+    public Button getCheckButton(){
+        return this.checkButton;
     }
 
         //Exports the GameScene

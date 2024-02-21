@@ -1,6 +1,4 @@
-//Author: WD
-//WD---vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-
+//Author: Eve
 
 
 public class GameCell {
