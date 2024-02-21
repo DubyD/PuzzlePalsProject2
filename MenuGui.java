@@ -15,6 +15,6 @@ import javafx.scene.control.ComboBox;
 public class MenuGui {
 
     private VBox menuOption;
-    private Button startButton;
     private ComboBox puzzleSelection;
+
 }
