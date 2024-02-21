@@ -1,5 +1,4 @@
 import javafx.application.*;
-import javafx.scene.*;
 import javafx.stage.*;
 
 public class Main extends Application{
@@ -12,11 +11,10 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage){
 
-        MenuGui hud = new MenuGui();
-        Scene guiComponents = new Scene(hud.getMenu(), 400, 400);
+        SceneSetter hud = new SceneSetter(primaryStage);
+        hud.showMenu();
 
-        primaryStage.setTitle("Rock Game");
-        primaryStage.setScene(guiComponents);
+        primaryStage.setTitle("PuzzlePals");
         primaryStage.show();
     }
 }
