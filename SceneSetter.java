@@ -10,64 +10,52 @@ import javafx.scene.layout.VBox;
 
 public class SceneSetter {
 
-        //The background for the entire game, used to
-    private VBox overMenu;
-    private VBox menuOption;
-    private VBox gameOption;
-    private Button startButton;
-    private ComboBox puzzleSelection;
+        //Creates a pointer to the Main classes stage
+    private Stage primaryStage;
 
-    public SceneSetter(){
+        //The Scenes to choose from
+    private Scene menuScene;
+    //private Scene gameScene;
 
-            //used to set Lambda fuctions to switch scenes
-        this.startButton = new Button();
+    public SceneSetter(Stage primaryStage){
 
-
-            //Parent for the stage
-        this.overMenu = new VBox();
-        this.overMenu.setAlignment(Pos.CENTER);
-
-            //Screens to switch between
-        this.gameOption = new VBox();
-        this.menuOption = new VBox();
+            //A pointer to the primaryStage
+        this.primaryStage = primaryStage;
+            //Sets the Scenes and Buttons
+        this.menuScene =
+        this.setScenes();
     }
 
-    public VBox getMenu(){
+    private void setScenes(){
 
-            //Catches the first iteration of supplying the Menu Screen
-        try{
-            this.overMenu.getChildren().remove(this.gameOption);
-        }catch(NullPointerException e){
-
-        }
-            //creating custom settings of VBox
+            // creating custom settings of menuScene components
+            // creating a pointer to one of the VBox's children (Button)
+            // for desired results when clicked
         MenuGui menuSetter = new MenuGui();
-        Button setLambda = menuSetter.getButton();
-        setLambda.setOnAction(event->{
-
+        menuSetter.getButton().setOnAction(event ->{
+            showMenu();
         });
+        this.menuScene = new Scene(menuSetter.getMenu(), 300, 200);
 
-        this.menuOption = menuSetter.getMenu();
-
-        this.overMenu.getChildren().add(this.menuOption);
-        return this.overMenu;
+            // creating custom settings of gameMenu components
+            // creating a pointer to one of the VBox's children (Button)
+            // for desired results when clicked
+        Board gameBoard = new Board();
+        gameBoard.getButton().setOnAction(event->{
+            showGame();
+        });
+        this.gameScene = new Scene(gameBoard.getBoard(), 600, 600);
     }
 
-    public VBox getGame(){
-            //Removes the Selection Menu
-        this.overMenu.getChildren().remove(this.menuOption);
 
-            //Returns a Game Screen
-        this.gameOption = board.getGame();
-        this.overMenu.getChildren().add(this.gameOption);
-        return this.overMenu;
-    }
+        //The switchboard between game screens
+        //
     public void showMenu(){
-        primaryStage.setScene(this.getMenu());
+        primaryStage.setScene(this.menuScene);
     }
 
     public void showGame(){
-        primaryStage.setScene(this.getGame());
+        //primaryStage.setScene(this.gameScene);
     }
 
 
