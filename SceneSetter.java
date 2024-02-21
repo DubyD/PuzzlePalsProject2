@@ -15,12 +15,13 @@ public class SceneSetter {
 
         //The Scenes to choose from
     private Scene menuScene;
-    //private Scene gameScene;
+    private Scene gameScene;
 
     public SceneSetter(Stage primaryStage){
 
             //A pointer to the primaryStage
         this.primaryStage = primaryStage;
+
             //Sets the Scenes and Buttons
         this.menuScene =
         this.setScenes();
@@ -35,7 +36,7 @@ public class SceneSetter {
         menuSetter.getButton().setOnAction(event ->{
             showMenu();
         });
-        this.menuScene = new Scene(menuSetter.getMenu(), 300, 200);
+        this.menuScene = new Scene(menuSetter.getMenu(), 200, 200);
 
             // creating custom settings of gameMenu components
             // creating a pointer to one of the VBox's children (Button)
@@ -55,7 +56,7 @@ public class SceneSetter {
     }
 
     public void showGame(){
-        //primaryStage.setScene(this.gameScene);
+        primaryStage.setScene(this.gameScene);
     }
 
 

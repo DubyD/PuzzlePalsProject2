@@ -1,8 +1,8 @@
 //Author WD
 
-import javafx.application.*;
-import javafx.scene.*;
-import javafx.scene.control.TextArea;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -22,6 +22,8 @@ public class MenuGui {
 
         // Middle child holding the next 2 variables
     private HBox linedUp;
+
+        // The Grand Children
     private Button startButton;
     private ComboBox puzzleSelection;
 
@@ -31,8 +33,8 @@ public class MenuGui {
         this.menuOption = new VBox();
         this.menuOption.setAlignment(Pos.CENTER);
 
-            //
-        this.instructions = new Label();
+            // Instructions for starting the game
+        this.instructions = new Label("Select a Puzzle size, then press 'Start Puzzle'!");
 
             // Setting up the Child to add to the Scene export
         this.linedUp = new HBox( 10);
@@ -40,8 +42,10 @@ public class MenuGui {
 
             // Grandchildren
         this.startButton = new Button("Start Puzzle");
+
             // Sets up options
         this.puzzleSelection = new ComboBox<String>();
+        this.dropBoxOptions();
 
             //adding Grandchildren
         this.linedUp.getChildren().add(this.puzzleSelection);
@@ -52,10 +56,26 @@ public class MenuGui {
         this.menuOption.getChildren().add(this.linedUp);
     }
 
+    private void dropBoxOptions(){
+
+            //Setting up the DropBox options
+        ObservableList<String> options = FXCollections.observableArrayList();
+
+            //HardWired options. May change later once PuzzleReader is complete
+        options.add("3x2");
+        options.add("3x3");
+        this.puzzleSelection.setItems(options);
+    }
+
+    public String selectedItem(){
+        String reply = this.puzzleSelection.getSelected();
+        return reply;
+    }
+        //Sends a Button Pointer to apply a Lambda function to the Menu's button
     public Button getButton(){
         return this.startButton;
     }
-
+        //Sends the Menu Gui to be added to the Stage
     public VBox getMenu(){
         return this.menuOption;
     }
