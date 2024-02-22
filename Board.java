@@ -6,7 +6,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.geometry.Pos;
-import javafx.scene.control.ComboBox;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Board {
 
@@ -14,9 +15,7 @@ public class Board {
     private VBox gameBoard;
 
     //Returns to MainMenu
-    private HBox endZone;
-    private Button endButton;
-    private Label endButtonInfo;
+    private GuiRow firstRow;
 
         //Separates the Puzzle and clues to be neatly next to each other
     private HBox mainFormatting;
@@ -31,28 +30,35 @@ public class Board {
         //based on the size of the puzzle
     private List<HBox> puzzleSectionRows;
 
+        //Third row pieces, HBoxes required
     private HBox rowThree;
-    private HBox hintRow;
-    private HBox checkRow;
-    private Label hintLabel;
-    private Button hintButton;
-    private Label checkLabel;
-    private Button checkButton;
+
+        //ThirdRow Leftside
+    private GuiRow hintRow;
+
+        //ThirdRow Rightside
+    private GuiRow checkRow;
+
+        //Saving puzzle size info to share with the rest of the program
+    private String puzzleSize;
 
 
     public Board(String puzzleSize){
 
+            //Saving the size of puzzle
+        this.puzzleSize = puzzleSize;
+//-------------------------------------------------------------------------------------------
             //Setting up the GameScene to be exported
         this.gameBoard = new VBox();
         this.gameBoard.setAlignment(Pos.CENTER);
-
+//-------------------------------------------------------------------------------------------
             //eject Area
-        this.endZone = new HBox();
-        this.endZone.setAlignment(Pos.CENTER);
-            //eject button and Label
-        this.endButtonInfo = new Label("End Game or new Game");
-        this.endButton = new Button("EmergencyExit");
+        this.firstRow = new GuiRow();
 
+            //eject button and Label
+        this.firstRow.setLabel("End Game or new Game");
+        this.firstRow.setButton("EmergencyExit");
+//-------------------------------------------------------------------------------------------
 
             //Setting up the puzzle and clue separation
         this.mainFormatting = new HBox();
@@ -68,41 +74,33 @@ public class Board {
             //Formats the Puzzle Space
         this.puzzleSectionRows = new ArrayList<HBox>();
         this.setPuzzleSize(puzzleSize);
-
+//-------------------------------------------------------------------------------------------
             //Third row formatting
         this.rowThree = new HBox();
         this.rowThree.setAlignment(Pos.CENTER);
 
             //Leftside of third row
-        this.checkRow = new HBox();
-        this.checkRow.setAlignment(Pos.CENTER);
-        this.checkLabel = new Label("Do you want to check your answers?");
-        this.checkButton = new Button("Check Answers");
+        this.checkRow = new GuiRow();
+        this.checkRow.setLabel("Do you want to check your answers?");
+        this.checkRow.setButton("Check Answers");
 
             //Rightside of third row
-        this.hintRow = new HBox();
-        this.hintRow.setAlignment(Pos.CENTER);
-        this.hintLabel = new Label("Do you need a hint?");
-        this.hintButton = new Button("'Hint'");
+        this.hintRow = new GuiRow();
+        this.hintRow.setLabel("Do you need a hint?");
+        this.hintRow.setButton("'Hint'");
 
-            //Filling the first Row of the Scene
-        this.endZone.getChildren().add(this.endButtonInfo);
-        this.endZone.getChildren().add(this.endButton);
+
 
             //Filling the second Row of the Scene
         this.mainFormatting.getChildren().add(this.puzzleFormatting);
         this.mainFormatting.getChildren().add(this.clueArea);
 
             //Filling the third Row of the Scene
-        this.checkRow.getChildren().add(this.checkLabel);
-        this.checkRow.getChildren().add(this.checkButton);
-        this.hintRow.getChildren().add(this.hintLabel);
-        this.hintRow.getChildren().add(this.hintButton);
-        this.rowThree.getChildren().add(this.checkRow);
-        this.rowThree.getChildren().add(this.hintRow);
+        this.rowThree.getChildren().add(this.checkRow.getRow());
+        this.rowThree.getChildren().add(this.hintRow.getRow());
 
             //First Row of the Scene
-        this.gameBoard.getChildren().add(this.endZone);
+        this.gameBoard.getChildren().add(this.firstRow.getRow());
             //Second Row of the Scene
         this.gameBoard.getChildren().add(this.mainFormatting);
             //Third Row of the Scene
@@ -120,6 +118,10 @@ public class Board {
             this.puzzleSectionRows.getChildren().add(row);
             x = x - 1;
         }
+    }
+
+    public String getSize(){
+        this.
     }
 
     public void setPuzzleSize(String size){
