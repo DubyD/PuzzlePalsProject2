@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 public class PuzzleReader{
-    private static String csvFilePath="./rolodex.csv";
-    private static File csvFile=new File(csvFilePath);
+    private static String csvFilePath = "./rolodex.csv";
+    private static File csvFile = new File(csvFilePath);
     public static String readCSV(String puzInput){
         //puzInput i.e = "3x4"
         String categories; String items_in_categories; 

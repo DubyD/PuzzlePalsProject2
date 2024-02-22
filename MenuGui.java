@@ -33,7 +33,8 @@ public class MenuGui {
         this.menuOption.setAlignment(Pos.CENTER);
 
             // Instructions for starting the game
-        this.instructions = new Label("Select a Puzzle size, then press 'Start Puzzle'!");
+        this.instructions = new Label("Select a Puzzle size, then press 'Start Puzzle'!\n"
+                                      "Match the people to their attributes, then press 'check answers'\n");
 
             // Setting up the Child to add to the Scene export
         this.linedUp = new HBox( 10);
