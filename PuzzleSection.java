@@ -1,17 +1,30 @@
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import java.awt.event.MouseEvent;
 
 public class PuzzleSection {
 
-    private TableView<GameCell> section;
+    public static TableView setTable(PuzzleTable data){
 
-    public PublicSection(){
-        this.section = new TableView<>();
+            //Disecting the Backend GameCells
+        GameCell[][] workingSpace = data.getSection();
+
+            //iterating the Backend into a TableView object
+        for(int x = 0; x < workingSpace.length; x++){
+            for(int y = 0; y < workingSpace[x].length; y++){
+
+                if(workingSpace[x][y].toString().equals("empty")){
+
+                }else{
+
+                }
+            }
+        }
     }
-
-    public void setHeader(String header){
+        //Used to add Click events to Table Elements
+    public void addClickEvent(MouseEvent event){
 
     }
-
-    public void
 
 }
