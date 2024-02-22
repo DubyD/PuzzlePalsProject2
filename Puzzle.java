@@ -1,3 +1,7 @@
+/**
+ * @author Evelyn Totman. Handles backend logic for the game board.
+ */
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -34,6 +38,11 @@ public class Puzzle {
         stateStack.push(gBoard);
     }
 
+    public Puzzle(){
+        gBoard = new ArrayList<>();
+        stateStack = new LinkedList<>();
+    }
+
     public void setAnswerKey(ArrayList<GameCell[][]> answerKey) {
         this.answerKey = answerKey;
     }
@@ -53,8 +62,46 @@ public class Puzzle {
         stateStack.push(gBoard);
     }
 
+    /**
+     *
+     * @return
+     */
+    public boolean isFinished(){
+        boolean gameWon = true;
+        for(int i = 0; i < gBoard.size(); i++){
+            for(int j = 0; j < gBoard.get(i).length; j++){
+                for(int k = 0; k < gBoard.get(i).length; k++){
+                    if(!gBoard.get(i)[j][k].equals(answerKey.get(i)[j][k])){
+                        gameWon = false;
+                    }
+                }
+            }
+        }
+        return gameWon;
+    }
+
+    /**
+     * clears any incorrect cell values.
+     * @return - returns true if no errors are present
+     */
     public boolean clearErrors(){
-        return true;
+        boolean errorCheck = true;
+        for(int i = 0; i < gBoard.size(); i++){
+            for(int j = 0; j < gBoard.get(i).length; j++){
+                for (int k = 0; k < gBoard.get(i).length; k++){
+                    if(!gBoard.get(i)[j][k].equals(answerKey.get(i)[j][k])){
+                        if(gBoard.get(i)[j][k].getCurVal() != 0 ){
+                            gBoard.get(i)[j][k].setCurVal(0);
+                            errorCheck = false;
+                        }
+                    }
+                }
+            }
+        }
+        if(!errorCheck){
+            stateStack.push(gBoard);
+        }
+        return errorCheck;
     }
 
     public ArrayList<GameCell[][]> getgBoard(){
@@ -62,7 +109,9 @@ public class Puzzle {
     }
 
     public void undo(){
-
+        if(!stateStack.isEmpty()){
+            gBoard = stateStack.pop();
+        }
     }
 
     public void hint(){
