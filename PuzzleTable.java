@@ -30,7 +30,7 @@ public class PuzzleTable {
 
         //Used for Creating and updating the Puzzle
     public void updatePuzzle(GameCell[][] update){
-        this.puzzlePiece = update;
+        this.puzzlePiece = update;1
     }
 
         //Used for updating the Puzzle

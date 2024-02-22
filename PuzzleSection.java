@@ -5,30 +5,23 @@ import java.awt.event.MouseEvent;
 
 public class PuzzleSection {
 
-    private TableView<TableRowData> section;
-    private int numberOfColumns;
+    public static TableView setTable(PuzzleTable data){
 
-    public PublicSection(){
+            //Disecting the Backend GameCells
+        GameCell[][] workingSpace = data.getSection();
 
-        this.section = new TableView<>();
-        this.numberOfColumns = 0;
+            //iterating the Backend into a TableView object
+        for(int x = 0; x < workingSpace.length; x++){
+            for(int y = 0; y < workingSpace[x].length; y++){
 
-    }
+                if(workingSpace[x][y].toString().equals("empty")){
 
-    public void setRowHeader(String header){
-        String[] pieces = header.split(",");
-        TableColumn<TableRowData, String> columnHeader = new TableColumn<>("Header");
-        for(String next: pieces){
-            columnHeader.setCellFactory(cellData -> cellData.getValue().getFirstColumn());
+                }else{
+
+                }
+            }
         }
-        this.numberOfColumns = this.numberOfColumns + 1;
     }
-    public void setColumn(String header){
-        TableColumn<Table, String> nextColumn = TableColumn<>(header);
-
-        this.section.getColumns().add(nextColumn);
-    }
-
         //Used to add Click events to Table Elements
     public void addClickEvent(MouseEvent event){
 
