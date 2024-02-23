@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 public class PuzzleReader{
-    private static String csvFilePath="./Rolodex.csv";
+    private static String csvFilePath="./rolodex.csv";
     private static String labelDataFilePath="./labelHeading.csv";
     private static File csvFile=new File(csvFilePath);
     private static File labelData = new File(labelDataFilePath);
@@ -30,7 +30,6 @@ public class PuzzleReader{
                 }
                 String[] splitLine = lineRead.split(",");
                 // splitLine contains [row,col,clues...]
-                char[] userPuzzleDimensions = puzInput.toCharArray();
                 categories = splitLine[0];
                 items_in_categories=splitLine[1];
                 if(categories.equals(inputCoordinates[0]) && items_in_categories.equals(inputCoordinates[1])){ // this line contains our coordinates.
@@ -61,7 +60,6 @@ public class PuzzleReader{
                     if(direction.equals("top")&&dataBoolean.equals("false")){ // = top header
                         for(int i = 4;i<splitLine.length;i++){
                             topHeaders.add(splitLine[i]);
-
                         }
                     } else if(direction.equals("left")&&dataBoolean.equals("false")){ // = left header
                         for(int i=4;i<splitLine.length;i++){
@@ -102,7 +100,6 @@ public class PuzzleReader{
             System.out.println(leftData);
             System.out.println("\n");
             System.out.println(clues);
-
             // make the first label null/empty for empty cell parsing. - wd
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
@@ -110,7 +107,26 @@ public class PuzzleReader{
         return("h"); // testing
     }
     public static String[] getAllSizes(){
-        String [] sizesList = {"3x4","3x5","4x4","4x5"};
+        String [] sizesList = new String[4];
+        try{
+            Scanner csvScanner=new Scanner(csvFile);
+            int counter=0;
+            while(csvScanner.hasNext()){
+                String csvLineRead = csvScanner.nextLine();
+                String[] csvLineSplit = csvLineRead.split(",");
+                String firstNum=csvLineSplit[0];
+                try{
+                    int x = Integer.parseInt(firstNum); // skip iteration if it's not a number.
+                }catch(Exception e){
+                    continue;
+                }
+                String secondNum=csvLineSplit[1];
+                sizesList[counter]=firstNum.concat("x").concat(secondNum);
+                counter++;
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("File not found.");
+        }
         return(sizesList);
     }
 }
