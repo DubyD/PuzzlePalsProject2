@@ -9,10 +9,10 @@ public class GameCell {
 
     public GameCell(boolean header){
         this.header = header;
-        curVal = 0;
-        error = false;
+        this.curVal = 0;
+        this.error = false;
         if(header){
-            stringVal = "Header";
+            this.stringVal = "Header";
         }
     }
 
@@ -26,7 +26,7 @@ public class GameCell {
 
     public void setCurVal(int curVal) {
         this.curVal = curVal;
-        setStringVal();
+        this.setStringVal();
     }
 
     public String getStringVal() {
@@ -34,27 +34,27 @@ public class GameCell {
     }
 
     public void setStringVal(){
-        if(curVal == 0){
-            stringVal = " ";
+        if(this.curVal == 0){
+            this.stringVal = " ";
         }
-        if(curVal == 1){
-            stringVal = "X";
+        if(this.curVal == 1){
+            this.stringVal = "X";
         }
-        if(curVal == 2){
-            stringVal = "O";
+        if(this.curVal == 2){
+            this.stringVal = "O";
         }
     }
 
     public boolean isError() {
-        return error;
+        return this.error;
     }
 
     public boolean isHeader() {
-        return header;
+        return this.header;
     }
 
-    public void setHeader(boolean header) {
-        this.header = header;
+    public void setHeader(String header) {
+        this.stringVal = header;
     }
 
     public void setError(boolean error) {
@@ -62,13 +62,13 @@ public class GameCell {
     }
 
     public int clickCell(){
-        if(curVal < 2){
-            curVal++;
+        if(this.curVal < 2){
+            this.curVal++;
         }
         else {
-            curVal = 0;
+            this.curVal = 0;
         }
-        setStringVal();
+        this.setStringVal();
         return curVal;
     }
 
@@ -77,11 +77,11 @@ public class GameCell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GameCell gameCell = (GameCell) o;
-        return curVal == gameCell.curVal;
+        return this.curVal == gameCell.curVal;
     }
 
     @Override
     public String toString(){
-        return stringVal;
+        return this.stringVal;
     }
 }

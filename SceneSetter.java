@@ -35,7 +35,7 @@ public class SceneSetter {
                 showGame(menuSetter.getSelectedItem());
             }
         });
-        this.menuScene = new Scene(menuSetter.getMenu(), 200, 200);
+        this.menuScene = new Scene(menuSetter.getMenu(), 400, 200);
 
 
     }
