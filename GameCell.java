@@ -53,7 +53,11 @@ public class GameCell {
         return this.header;
     }
 
-    public void setHeader(String header) {
+    public void setHeader(boolean header) {
+        this.header = header;
+    }
+
+    public void setHeaderString(String header) {
         this.stringVal = header;
     }
 

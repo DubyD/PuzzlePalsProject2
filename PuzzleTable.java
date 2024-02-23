@@ -32,6 +32,10 @@ public class PuzzleTable {
         }
     }
 
+    public PuzzleTable(int dim){
+        this(dim, dim, false, false);
+    }
+
 
     public GameCell[][] getSection(){
         return this.puzzlePiece;
@@ -51,6 +55,10 @@ public class PuzzleTable {
         return hasColumnHeaders;
     }
 //WD--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    public GameCell getCell(int x, int y){
+        return puzzlePiece[x][y];
+    }
 
     public void clickCell(int row, int column){
         puzzlePiece[row][column].clickCell();
