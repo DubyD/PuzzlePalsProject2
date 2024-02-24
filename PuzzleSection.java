@@ -1,10 +1,6 @@
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -24,14 +20,21 @@ public class PuzzleSection {
                 GameCell cell = workingSpace[x][y];
 
                     //Adding a simple string property so that the Grid can Update automatically
+                    //this will be easier than adding specialized methods
                 StringProperty cellText = new SimpleStringProperty(cell.toString());
                 Label label = new Label();
                 label.textProperty().bind(cellText);
 
-                // Add styles, event handlers, or other customization as needed
-                label.setStyle("-fx-border-width: 1; -fx-border-color: black;");
+
+
+                    //If the Grid space is not a Header it will add a click event
                 if(cell.isHeader() == false) {
-                    label.setOnMouseClicked(event -> addClickEvent(event, cell, workingSpace));
+                        //This will add a little flare and space between pieces
+                    label.setStyle("-fx-border-width: 1; -fx-border-color: black;");
+                    label.setOnMouseClicked(event -> addClickEvent(event, cell, data));
+                }else{
+                        //This will add a little flare and space between pieces
+                    label.setStyle("-fx-border-width: 2; -fx-border-color: Red;");
                 }
 
                 // Add label to the grid pane
@@ -49,8 +52,11 @@ public class PuzzleSection {
         return gridPane;
     }
 
-    private static void addClickEvent(MouseEvent event, GameCell cell, GameCell[][] grid) {
+    private static void addClickEvent(MouseEvent event, GameCell cell, PuzzleTable grid) {
 
+        int x = cell.getX();
+        int y = cell.getY();
+        grid.clickCell(x,y);
 
     }
 

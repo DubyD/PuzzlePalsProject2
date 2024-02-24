@@ -69,7 +69,6 @@ public class Puzzle {
                 }
             }
         }
-        stateStack.push(gBoard);
         return noErrors;
     }
 
