@@ -157,11 +157,11 @@ public class PuzzleReader{
             System.out.println("File not found.");
         }
 
+
+
         Puzzle returnPuzzle = new Puzzle();
         return("h"); // temporary, should return a Puzzle.
     }
-
-
 
 
     public static String[] getAllSizes(){
@@ -186,6 +186,13 @@ public class PuzzleReader{
             System.out.println("File not found.");
         }
         return(sizesList);
+    }
+    public static String[][] getAnswerKey(){
+
+    }
+
+    public static ArrayList<String> getClues(){
+        return(clues);
     }
 }
 //AK
