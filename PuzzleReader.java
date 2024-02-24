@@ -35,7 +35,7 @@ public class PuzzleReader{
 
     private static ArrayList<String> clues = new ArrayList<String>();
     private static ArrayList<String[][]> puzzleSections = new ArrayList<>();
-    public static String readCSV(String puzInput){
+    public static Puzzle readCSV(String puzInput){
         //puzInput i.e = "3x4"
         try{
             Scanner csvScanner=new Scanner(csvFile);
@@ -159,12 +159,12 @@ public class PuzzleReader{
             System.out.println(leftData);
             System.out.println("\n");
             System.out.println(clues);*/
-
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
         }
 
-        return("h"); // temporary, should return a Puzzle.
+        Puzzle returnPuzzle = new Puzzle(inputCoordinates[0],inputCoordinates[1]);
+        return(returnPuzzle);
     }
 
 
