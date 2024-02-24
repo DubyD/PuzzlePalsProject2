@@ -41,12 +41,15 @@ public class Board {
 
         //Saving puzzle size info to share with the rest of the program
     private String puzzleSize;
+    private Puzzle puzzle;
 
 
     public Board(String puzzleSize){
 
+
             //Saving the size of puzzle
         this.puzzleSize = puzzleSize;
+        this.puzzle = PuzzleReader.readCSV();
 //-------------------------------------------------------------------------------------------
             //Setting up the GameScene to be exported
         this.gameBoard = new VBox();
@@ -115,10 +118,11 @@ public class Board {
             //Sizes are number of matching catagories x items in catagories
         while(x > 0){
             HBox row = new HBox();
-            this.puzzleSectionRows.getChildren().add(row);
+            this.puzzleSectionRows.add(row);
             x = x - 1;
         }
     }
+
 
     public String getSize(){
         this.

@@ -15,11 +15,11 @@ public class PuzzleTable {
         this.puzzlePiece = new GameCell[rows][columns];
 
             //Used for formatting the Header Cells
-        if(rows > columns){
+        if(rows < columns){
             this.hasRowHeaders = true;
             this.hasColumnHeaders = false;
 
-        }else if(rows < columns){
+        }else if(rows > columns){
             this.hasRowHeaders = false;
             this.hasColumnHeaders = true;
 
