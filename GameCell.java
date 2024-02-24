@@ -9,19 +9,21 @@ public class GameCell {
     private boolean header;
 
     private String answerKey;
-
+    private int answerVal;
     private int x;
     private int y;
+
 
     public GameCell(int x, int y){
 
             //initializes a GameCell
         this.header = false;
         this.curVal = 0;
-        this.stringVal = "";
+        this.stringVal = " ";
         this.x = x;
         this.y = y;
         this.answerKey = "";
+        this.answerVal = 0;
     }
 
         //second constructor without param to complete class
@@ -92,6 +94,11 @@ public class GameCell {
         //Checks to see if the user input the correct answer
     public boolean isError(){
 
+            //Skips over Header Cells when checking answers
+        if(this.header == true){
+            return this.header;
+        }
+            //Returns whether this Cell is Correct or not
         if(this.answerKey.equals(this.stringVal)){
             return true;
         }else{
@@ -102,6 +109,21 @@ public class GameCell {
         //Used to set the answer key to each section of Puzzle
     public void setAnswer(String correctAnswer){
         this.answerKey = correctAnswer;
+        if(this.answerKey.equals("X")){
+            this.answerVal = 1;
+        }
+        if(this.answerKey.equals("O")){
+            this.answerVal = 0;
+        }
+    }
+
+    public String getAnswerKey(){
+        return this.answerKey;
+    }
+        //Changes a cell based on Hint usage
+    public void setHint(){
+        this.curVal = this.answerVal;
+        this.setStringVal();
     }
 
     @Override

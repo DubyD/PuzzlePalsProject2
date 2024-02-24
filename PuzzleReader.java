@@ -153,7 +153,7 @@ public class PuzzleReader{
             System.out.println(leftData);
             System.out.println("\n");
             System.out.println(clues);*/
-            
+
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
         }

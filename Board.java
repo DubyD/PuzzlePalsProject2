@@ -40,7 +40,7 @@ public class Board {
     private GuiRow checkRow;
 
         //Saving puzzle size info to share with the rest of the program
-    private String puzzleSize;
+
     private Puzzle puzzle;
 
 
@@ -48,8 +48,7 @@ public class Board {
 
 
             //Saving the size of puzzle
-        this.puzzleSize = puzzleSize;
-        this.puzzle = PuzzleReader.readCSV();
+        this.puzzle = PuzzleReader.readCSV(puzzleSize);
 //-------------------------------------------------------------------------------------------
             //Setting up the GameScene to be exported
         this.gameBoard = new VBox();
@@ -125,7 +124,7 @@ public class Board {
 
 
     public String getSize(){
-        this.
+        return this.puzzleSize;
     }
 
     public void setPuzzleSize(String size){

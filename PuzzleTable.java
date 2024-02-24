@@ -11,6 +11,9 @@ public class PuzzleTable {
     private boolean hasRowHeaders;
     private boolean hasColumnHeaders;
 
+    private int sizeLength;
+    private int sizeWidth;
+
         //For any and all PuzzleTables
     public PuzzleTable(int rows, int columns, boolean bothHeaders){
 
@@ -18,21 +21,43 @@ public class PuzzleTable {
 
             //Used for formatting the Header Cells
         if(rows < columns){
+
             this.hasRowHeaders = true;
             this.hasColumnHeaders = false;
+
+                //For connecting answers
+            this.sizeWidth = rows - 1;
+            this.sizeLength = columns;
 
         }else if(rows > columns){
+
             this.hasRowHeaders = false;
             this.hasColumnHeaders = true;
 
+                //For connecting answers
+            this.sizeWidth = rows;
+            this.sizeLength = columns - 1;
+
         } else if(bothHeaders){
+
             this.hasRowHeaders = true;
             this.hasColumnHeaders = true;
 
+                //For connecting answers
+            this.sizeWidth = rows - 1;
+            this.sizeLength = columns - 1;
+
         }else{
+
             this.hasRowHeaders = false;
             this.hasColumnHeaders = false;
+
+                //For connecting answers
+            this.sizeWidth = rows;
+            this.sizeLength = columns;
+
         }
+
 
             //initializes the game cells
         for(int i = 0; i < rows; i++){
@@ -114,6 +139,65 @@ public class PuzzleTable {
                 }
             }
         }
+    }
+
+    public void connectingAnswers(String[][] answers){
+
+        int x = 0;
+
+            //skips the first row
+        if(this.hasColumnHeaders == true){
+            x = 1;
+        }
+            //Using the filler Variables to connect the answer string to the GameCellArray
+        while(x < this.sizeLength){
+            int y;
+                //Skips the first Column
+            if(this.hasRowHeaders == true){
+                y = 1;
+            }else{
+                y = 0;
+            }
+
+            while(y < this.sizeWidth) {
+                this.puzzlePiece[x][y].setAnswer(answers[x][y]);
+                y++;
+            }
+            x++;
+        }
+    }
+        //Comparing the user input with answerKey
+    public boolean isCorrect(){
+
+        boolean reply = true;
+            //Iterates through the puzzle to find if the entire puzzle is correct or not
+        for(int x = 0; x < this.sizeLength; x++){
+            for(int y = 0; y < this.sizeWidth; y++){
+                reply = reply && puzzlePiece[x][y].isError();
+
+                    //Ends the loop if it is already false
+                if(reply == false){
+                    return reply;
+                }
+            }
+        }
+        return reply
+    }
+
+    public String getHint(){
+
+        String reply = "";
+        for(int x = 0; x < this.sizeLength; x++) {
+            for (int y = 0; y < this.sizeWidth; y++) {
+                if(puzzlePiece[x][y].isError() == false){
+                    reply = puzzlePiece[x][y].getX() + "x" puzzlePiece[x][y].getY();
+                    reply = reply + " is supposed to be " + puzzlePiece[x][y].getAnswerKey();
+                    puzzlePiece[x][y].setHint();
+                    return reply;
+                }
+            }
+        }
+        return reply;
     }
 
     //Checks if the given object is equal to this obj by comparing puzzlePiece attributes
