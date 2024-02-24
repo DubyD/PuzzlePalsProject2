@@ -11,24 +11,31 @@ public class Puzzle {
     private LinkedList<ArrayList<PuzzleTable>> stateStack;
 
     public Puzzle(int categories, int dim){
-        gBoard = new ArrayList<>();
-        answerKey = new ArrayList<>();
+        gBoard = new ArrayList<PuzzleTable>();
+        answerKey = new ArrayList<String[]>();
+        int header = dim + 1;
         if(categories == 3){
-            gBoard.add(new PuzzleTable(dim + 1, dim + 1, true, true));
-            gBoard.add(new PuzzleTable(dim + 1, dim, false, true));
-            gBoard.add(new PuzzleTable(dim, dim + 1, true, false));
+                //top left section
+            gBoard.add(new PuzzleTable(header, header, true));
+                //top right section
+            gBoard.add(new PuzzleTable(header, dim, false));
+                //bottom left section
+            gBoard.add(new PuzzleTable(dim, header,false));
         }
         else{
-            gBoard.add(new PuzzleTable(dim + 1, dim + 1, true, true));
-            gBoard.add(new PuzzleTable(dim + 1, dim, false, true));
-            gBoard.add(new PuzzleTable(dim + 1, dim, false, true));
-            gBoard.add(new PuzzleTable(dim));
-            gBoard.add(new PuzzleTable(dim, dim + 1, true, false));
-            gBoard.add(new PuzzleTable(dim, dim + 1, true, false));
+                //top left section
+            gBoard.add(new PuzzleTable(header, header, true, true));
+                //top middle section
+            gBoard.add(new PuzzleTable(header, dim, false));
+                //top right section
+            gBoard.add(new PuzzleTable(header, dim, false));
+                //middle left section
+            gBoard.add(new PuzzleTable(dim, header,false));
+                //middle middle section
+            gBoard.add(new PuzzleTable(dim, dim, false));
+                //bottom left section
+            gBoard.add(new PuzzleTable(dim, header,false));
         }
-
-        stateStack = new LinkedList<>();
-        stateStack.push(gBoard);
     }
 
     public void setAnswerKey(ArrayList<PuzzleTable> answerKey) {
