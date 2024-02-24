@@ -11,8 +11,8 @@ public class Puzzle {
     private LinkedList<ArrayList<PuzzleTable>> stateStack;
 
     public Puzzle(int categories, int dim){
-        gBoard = new ArrayList<PuzzleTable>();
-        answerKey = new ArrayList<String[]>();
+        gBoard = new ArrayList<>();
+        answerKey = new ArrayList<>();
         int header = dim + 1;
         if(categories == 3){
                 //top left section
@@ -24,7 +24,7 @@ public class Puzzle {
         }
         else{
                 //top left section
-            gBoard.add(new PuzzleTable(header, header, true, true));
+            gBoard.add(new PuzzleTable(header, header, true));
                 //top middle section
             gBoard.add(new PuzzleTable(header, dim, false));
                 //top right section
@@ -36,7 +36,8 @@ public class Puzzle {
                 //bottom left section
             gBoard.add(new PuzzleTable(dim, header,false));
         }
-        this.stateStack
+        this.stateStack = new LinkedList<>();
+        stateStack.push(gBoard);
     }
 
 
@@ -57,6 +58,7 @@ public class Puzzle {
 
     public void clickCell(int piece, int row, int column){
         gBoard.get(piece).clickCell(row, column);
+        stateStack.push(gBoard);
     }
 
 
@@ -65,16 +67,18 @@ public class Puzzle {
         boolean noErrors = true;
         for(int i = 0; i < gBoard.size(); i++){
             if(!gBoard.get(i).equals(answerKey.get(i))){
-                noErrors = false;
                 for(int j = 0; j < gBoard.get(i).getSection().length; j++){
                     for (int k = 0; k < gBoard.get(i).getSection().length; k++){
-                        if(!gBoard.get(i).getCell(j, k).equals(answerKey.get(i).getCell(j, k))){
-                            gBoard.get(i).getCell(j, k).setError(true);
+                        if(!gBoard.get(i).getCell(j, k).equals(answerKey.get(i).getCell(j, k)) && gBoard.get(i).getCell(j, k).getCurVal() != 0){
+                            noErrors = false;
                             gBoard.get(i).getCell(j, k).setCurVal(0);
                         }
                     }
                 }
             }
+        }
+        if(!noErrors){
+            stateStack.push(gBoard);
         }
         return noErrors;
     }
@@ -85,6 +89,7 @@ public class Puzzle {
         }
     }
 
+    //checks if the puzzle is finished
     public boolean isFinished(){
         boolean gameWon = true;
         for(int i = 0; i < gBoard.size(); i++){

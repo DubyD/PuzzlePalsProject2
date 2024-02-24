@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * @author Evelyn Totman.
  */
@@ -24,7 +26,7 @@ public class GameCell {
 
         //second constructor without param to complete class
     public GameCell(){
-        this(false);
+        this(0, 0);
     }
 
         //Sets the CurVal if a cell with the same row or column is considered the right answer
@@ -46,7 +48,12 @@ public class GameCell {
         }
     }
 
-        //States whether this is a header or not
+    //returns the current value of this cell
+    public int getCurVal() {
+        return curVal;
+    }
+
+    //States whether this is a header or not
     public boolean isHeader() {
         return this.header;
     }
@@ -102,7 +109,7 @@ public class GameCell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GameCell gameCell = (GameCell) o;
-        return this.curVal == gameCell.curVal;
+        return this.curVal == gameCell.curVal && Objects.equals(this.stringVal, gameCell.stringVal);
     }
 
     @Override

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @author Evelyn Totman.
  */
@@ -23,7 +25,7 @@ public class PuzzleTable {
             this.hasRowHeaders = false;
             this.hasColumnHeaders = true;
 
-        } else if(bothHeaders == true){
+        } else if(bothHeaders){
             this.hasRowHeaders = true;
             this.hasColumnHeaders = true;
 
@@ -48,7 +50,7 @@ public class PuzzleTable {
                     puzzlePiece[0][j].setHeader(true);
                 }
                     //Sets the blank Space so we don't have to add it to .csv
-                if(bothHeaders == true){
+                if(bothHeaders){
                     puzzlePiece[0][0].setHeaderString("Header Row");
                 }
             }
@@ -114,8 +116,12 @@ public class PuzzleTable {
         }
     }
 
+    //Checks if the given object is equal to this obj by comparing puzzlePiece attributes
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(obj == this) return true;
+        if(obj == null || getClass() == obj.getClass()) return false;
+        PuzzleTable temp = (PuzzleTable) obj;
+        return Arrays.deepEquals(puzzlePiece, temp.puzzlePiece);
     }
 }
