@@ -18,20 +18,30 @@ public class PuzzleReader{
     private static File file3x4=new File(path3x4);
     private static File file4x4=new File(path4x4);
     private static File file4x5=new File(path4x5);
+
+    private static String categories; 
+    private static String items_in_categories; 
+    private static Integer counter = 0;
+
+    private static ArrayList<String> topHeaders = new ArrayList<>();
+    // topHeaders = i.e [customers,guides]
+    private static ArrayList<String> leftHeaders = new ArrayList<>();
+    // same logic as topHeaders
+    private static ArrayList<ArrayList<String>> topData = new ArrayList<>();
+    // topData => [[customerdata,customerdata],[guidesdata,guidesdata]]
+    private static ArrayList<ArrayList<String>> leftData = new ArrayList<>();
+    // same logic as topData
+
+
+    private static ArrayList<String> clues = new ArrayList<String>();
+    private static ArrayList<String[][]> puzzleSections = new ArrayList<>();
     public static String readCSV(String puzInput){
         //puzInput i.e = "3x4"
-        String categories; String items_in_categories; 
-        Integer counter = 0;
-        ArrayList<String> topHeaders = new ArrayList<>();
-        ArrayList<String> leftHeaders = new ArrayList<>();
-        ArrayList<ArrayList<String>> topData = new ArrayList<>();
-        ArrayList<ArrayList<String>> leftData = new ArrayList<>();
-        ArrayList<String> clues = new ArrayList<String>();
-        ArrayList<String[][]> puzzleSections = new ArrayList<>();
         try{
             Scanner csvScanner=new Scanner(csvFile);
             String[] inputCoordinates=puzInput.split("x");
             // inputCoordinates = i.e  [4,5];
+            // This is parsing what the user input.
             while(csvScanner.hasNext()){
                 String lineRead = csvScanner.nextLine();
                 if(counter==0){
@@ -56,7 +66,7 @@ public class PuzzleReader{
                 String lineRead = labelScanner.nextLine();
                 if(counter==0){
                     counter++;
-                    continue;
+                    continue; // if it's the first line we should skip it.
                 }
                 String[] splitLine=lineRead.split(",");
                 //= row,column,top or left, data true or false, headers.....
@@ -64,6 +74,7 @@ public class PuzzleReader{
                 String column=inputCoordinates[1];
                 String direction=splitLine[2];
                 String dataBoolean=splitLine[3];
+                // parsing of Header and Header Data
                 // headers / data onwards from 4.
                 if(row.equals(splitLine[0])&&column.equals(splitLine[1])){
                     // this is the line(s) we need.
@@ -102,6 +113,8 @@ public class PuzzleReader{
                     }
                 }
             }
+
+            // Depending on user Input we decide which csv file to scan.
             Scanner sectionScanner=null;
             if(inputCoordinates[0].equals("3")&&inputCoordinates[1].equals("4")){
                 sectionScanner=new Scanner(file3x4);
@@ -113,22 +126,18 @@ public class PuzzleReader{
                 sectionScanner = new Scanner(file4x5);
             }
 
+            // Scanning for answer key.
             String[][] currentSection = new String[Integer.parseInt(inputCoordinates[1])][Integer.parseInt(inputCoordinates[1])];
             int parseCounter=0;
             while(sectionScanner.hasNext()){
                 String currentLine = sectionScanner.nextLine();
                 if(currentLine.equals("")){
                     puzzleSections.add(currentSection);
-                    System.out.println("reached empty.");
                     parseCounter=0;
                     currentSection=new String[Integer.parseInt(inputCoordinates[1])][Integer.parseInt(inputCoordinates[1])]; // clear the array.
                     continue;
                 }
                 String[] currentLineParsed = currentLine.split(",");
-                //^^ => i.e [X,X,O,X,X];
-                /*{1, 2, 3}, [[0,0],[0,1],0,2]
-                  {4, 5, 6}, [[1,0],[1,1],[1,2]]
-                  {7, 8, 9} */ //[2,0],[2,1],[2,2]
                 for(int i=0;i<currentLineParsed.length;i++){
                     currentSection[parseCounter][i]=currentLineParsed[i];
                 }
@@ -137,29 +146,23 @@ public class PuzzleReader{
             puzzleSections.add(currentSection); // add after EOF :)
 
               //Print all sections {testing}
-            for(String[][] x: puzzleSections){
+            /*for(String[][] x: puzzleSections){
                 for(int i=0;i<x.length;i++){
                     System.out.println(x[i][0]+x[i][1]+x[i][2]+x[i][3]+x[i][4]+"\n");
                 }
-            }
-
-
-
-
+            }*/
+            /* 
             System.out.println(topHeaders);
             System.out.println(topData);
             System.out.println("\n");
             System.out.println(leftHeaders);
             System.out.println(leftData);
             System.out.println("\n");
-            System.out.println(clues);
+            System.out.println(clues);*/
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
         }
 
-
-
-        Puzzle returnPuzzle = new Puzzle();
         return("h"); // temporary, should return a Puzzle.
     }
 
@@ -187,8 +190,10 @@ public class PuzzleReader{
         }
         return(sizesList);
     }
-    public static String[][] getAnswerKey(){
 
+
+    public static ArrayList<String[][]> getAnswerKey(){
+      return(puzzleSections);
     }
 
     public static ArrayList<String> getClues(){
