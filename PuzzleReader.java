@@ -146,17 +146,18 @@ public class PuzzleReader{
 
 
 
-            /*System.out.println(topHeaders);
+            System.out.println(topHeaders);
             System.out.println(topData);
             System.out.println("\n");
             System.out.println(leftHeaders);
             System.out.println(leftData);
             System.out.println("\n");
-            System.out.println(clues);*/
-            
+            System.out.println(clues);
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
         }
+
+        Puzzle returnPuzzle = new Puzzle();
         return("h"); // temporary, should return a Puzzle.
     }
 
