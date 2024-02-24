@@ -1,4 +1,7 @@
-//AK
+/*
+ *  Ahmed Khan
+ * Program constructs a puzzle based on clues, labels, answer keys.
+ */
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
