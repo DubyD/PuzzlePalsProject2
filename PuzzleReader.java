@@ -12,14 +12,9 @@ public class PuzzleReader{
     private static String path3x4 = "./csv/3x4answerKey.csv";
     private static String path4x4 = "./csv/4x4answerKey.csv";
     private static String path4x5 = "./csv/4x5answerKey.csv";
-
     private static File file3x4=new File(path3x4);
     private static File file4x4=new File(path4x4);
     private static File file4x5=new File(path4x5);
-
-
-
-
     public static String readCSV(String puzInput){
         //puzInput i.e = "3x4"
         String categories; String items_in_categories; 
@@ -159,8 +154,12 @@ public class PuzzleReader{
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
         }
-        return("h"); // testing
+        return("h"); // temporary, should return a Puzzle.
     }
+
+
+
+
     public static String[] getAllSizes(){
         String [] sizesList = new String[4];
         try{
