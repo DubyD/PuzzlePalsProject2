@@ -36,23 +36,30 @@ public class Puzzle {
                 //bottom left section
             gBoard.add(new PuzzleTable(dim, header,false));
         }
+        this.stateStack
     }
+
 
     public void setAnswerKey(ArrayList<PuzzleTable> answerKey) {
         this.answerKey = answerKey;
     }
 
+
     public ArrayList<PuzzleTable> getgBoard() {
         return gBoard;
     }
+
 
     public ArrayList<PuzzleTable> getAnswerKey() {
         return answerKey;
     }
 
+
     public void clickCell(int piece, int row, int column){
         gBoard.get(piece).clickCell(row, column);
     }
+
+
 
     public boolean clearErrors(){
         boolean noErrors = true;
