@@ -31,52 +31,47 @@ public class Puzzle {
             //top left section
             gBoard.add(new PuzzleTable(header, header, true));
             //top right section
-            gBoard.add(new PuzzleTable(header, dim, false));
+            gBoard.add(new PuzzleTable(dim, header, false));
             //bottom left section
-            gBoard.add(new PuzzleTable(dim, header,false));
+            gBoard.add(new PuzzleTable(header, dim,false));
         }
         else{
             //top left section
             gBoard.add(new PuzzleTable(header, header, true));
             //top middle section
-            gBoard.add(new PuzzleTable(header, dim, false));
+            gBoard.add(new PuzzleTable(dim, header, false));
             //top right section
-            gBoard.add(new PuzzleTable(header, dim, false));
+            gBoard.add(new PuzzleTable(dim, header, false));
             //middle left section
-            gBoard.add(new PuzzleTable(dim, header,false));
+            gBoard.add(new PuzzleTable(header, dim,false));
             //middle middle section
             gBoard.add(new PuzzleTable(dim, dim, false));
             //bottom left section
-            gBoard.add(new PuzzleTable(dim, header,false));
+            gBoard.add(new PuzzleTable(header, dim,false));
         }
         this.stateStack = new LinkedList<>();
         stateStack.push(gBoard);
 
         //Private methods to set the rest of the Data in this Puzzle Obj.
         this.setAnswerKey();
-        this.setHeaders(this.topHeaders, "Top");
-        this.setHeaders(this.leftHeaders, "Left");
+        this.setHeaders(this.topHeaders,this.leftHeaders);
     }
-    private void setHeaders(ArrayList<ArrayList<String>> headers, String xSide){
+    private void setHeaders(ArrayList<ArrayList<String>> topHeaders, ArrayList<ArrayList<String>> sideHeaders){
             //iterates through all the Boards
         for(int i = 0; i < gBoard.size(); i++){
 
 
-            int numberOfHeaders = headers.size();
-            if (xSide.equals("Top")) {
-                if (gBoard.get(i).getColumnHeader() == true) {
-                    ArrayList<String> working = headers.get(0);
-                    gBoard.get(i).addTopHeader(working);
-                    headers.remove(working);
-                }
-            } else {
-                if (gBoard.get(i).getRowHeader() == true) {
-                    ArrayList<String> working = headers.get(0);
-                    gBoard.get(i).addLeftHeader(working);
-                    headers.remove(working);
-                }
-            }
+            if (gBoard.get(i).getColumnHeader() == true) {
+                ArrayList<String> working = topHeaders.get(0);
+                gBoard.get(i).addTopHeader(working);
+                topHeaders.remove(working);
 
+            }
+            if (gBoard.get(i).getRowHeader() == true) {
+                ArrayList<String> working = leftHeaders.get(0);
+                gBoard.get(i).addLeftHeader(working);
+                leftHeaders.remove(working);
+            }
         }
     }
 

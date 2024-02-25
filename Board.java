@@ -55,7 +55,7 @@ public class Board {
 //-------------------------------------------------------------------------------------------
             //Setting up the GameScene to be exported
         this.gameBoard = new VBox();
-        this.gameBoard.setAlignment(Pos.CENTER);
+        this.gameBoard.setAlignment(Pos.TOP_CENTER);
 //-------------------------------------------------------------------------------------------
             //eject Area
         this.firstRow = new GuiRow();
@@ -64,59 +64,58 @@ public class Board {
         this.firstRow.setLabel("End Game or new Game");
         this.firstRow.setButton("EmergencyExit");
 //-------------------------------------------------------------------------------------------
+        //Goes Next to the puzzleFormatting
+        this.clueArea = new TextArea();
+        this.setClues();
+        this.clueArea.setEditable(false);
 
-            //Setting up the puzzle and clue separation
-        this.mainFormatting = new HBox();
-        this.mainFormatting.setAlignment(Pos.CENTER);
 
             //Setting up the Puzzle Space
         this.puzzleFormatting = new VBox();
         this.puzzleFormatting.setAlignment(Pos.TOP_CENTER);
 
 
-            //Goes next to the puzzleFormatting
-        this.clueArea = new TextArea();
-        this.setClues();
-        this.clueArea.setEditable(false);
-
             //Formats the Puzzle Space
         this.puzzleSectionRows = new ArrayList<HBox>();
         this.setPuzzleSize(puzzleSize);
+
+            //Formats the Clues next to the puzzle
+        this.mainFormatting = new HBox();
+        this.mainFormatting.getChildren().add(this.puzzleFormatting);
+        this.mainFormatting.getChildren().add(this.clueArea);
 //-------------------------------------------------------------------------------------------
             //Third row formatting
         this.rowThree = new HBox();
         this.rowThree.setAlignment(Pos.CENTER);
 
-            //Leftside of third row
+            //Leftside of Third row
         this.checkRow = new GuiRow();
         this.checkRow.setLabel("Do you want to check your answers?");
         this.checkRow.setButton("Check Answers");
 
-            //Rightside of third row
+            //Rightside of Third row
         this.hintRow = new GuiRow();
         this.hintRow.setLabel("Do you need a hint?");
         this.hintRow.setButton("'Hint'");
 
+        //Filling the Third Row of the Scene
+        this.rowThree.getChildren().add(this.checkRow.getRow());
+        this.rowThree.getChildren().add(this.hintRow.getRow());
+
+//-------------------------------------------------------------------------------------------
             //FourthRow
         this.hintAction = new Label();
         this.setHints();
 
-
-
-            //Filling the second Row of the Scene
-        this.mainFormatting.getChildren().add(this.puzzleFormatting);
-        this.mainFormatting.getChildren().add(this.clueArea);
-
-            //Filling the third Row of the Scene
-        this.rowThree.getChildren().add(this.checkRow.getRow());
-        this.rowThree.getChildren().add(this.hintRow.getRow());
-
+//-------------------------------------------------------------------------------------------
             //First Row of the Scene
         this.gameBoard.getChildren().add(this.firstRow.getRow());
             //Second Row of the Scene
         this.gameBoard.getChildren().add(this.mainFormatting);
             //Third Row of the Scene
         this.gameBoard.getChildren().add(this.rowThree);
+            //Fourth Row of the Scene
+        this.gameBoard.getChildren().add(this.hintAction);
 
     }
 
@@ -151,17 +150,22 @@ public class Board {
         for(int i = 0; i < x; i++){
             HBox row = new HBox();
             row.setAlignment(Pos.TOP_LEFT);
-                //Adding particular GridPanes to HBox's
-            while(i < x){
-                GridPane work = guiPieces.get(i);
+
+            //Adding particular GridPanes to HBox's
+            int j = 0;
+            int k = x - i;
+            while(j < k){
+
+                    //Takes the First GridPane and adds it to the current Row
+                GridPane work = guiPieces.get(0);
                 row.getChildren().add(work);
+
+                    //Removing GridPanes to not 'Double Book'
                 guiPieces.remove(work);
-                i++;
+                j++;
             }
-                //Removing GridPanes to not 'Double Book'
-            guiPieces.removeAll(row.getChildren());
+
             this.puzzleSectionRows.add(row);
-            x = x - 1;
         }
             //Adding the HBox's to the Puzzle Space itself
         for(int i = 0; i < this.puzzleSectionRows.size(); i++){

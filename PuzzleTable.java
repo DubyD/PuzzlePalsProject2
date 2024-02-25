@@ -120,7 +120,7 @@ public class PuzzleTable {
 
             //iterating through the puzzle
             for(int x = 0; x < puzzlePiece.length; x++){
-                for(int y = 0; y < puzzlePiece.length; y++){
+                for(int y = 0; y < puzzlePiece[0].length; y++){
 
                     if(x == row){
                         if(y == column){
@@ -241,6 +241,7 @@ public class PuzzleTable {
 
                 //Skips the Very first section
             }else {
+
                 puzzlePiece[0][i].setHeaderString(header.get(x));
                 x++;
             }

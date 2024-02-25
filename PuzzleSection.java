@@ -1,7 +1,8 @@
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+//Author WD
+
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -31,7 +32,7 @@ public class PuzzleSection {
                     //If the Grid space is not a Header it will add a click event
                 if(cell.isHeader() == false) {
                         //This will add a little flare and space between pieces
-                    label.setStyle("-fx-border-width: 1; -fx-border-color: black;");
+                    label.setStyle("-fx-border-width: 2; -fx-border-color: black;");
 
                     label.setOnMouseClicked(event -> {
                         addClickEvent(event, cell, data, connectingCells);
@@ -46,11 +47,19 @@ public class PuzzleSection {
             }
         }
 
-        // Add constraints for uniformity
+            // Add constraints for uniformity
         for (int i = 0; i < workingSpace.length; i++) {
             RowConstraints rowConstraints = new RowConstraints();
             rowConstraints.setMinHeight(50);
+            rowConstraints.setMaxHeight(50);
             gridPane.getRowConstraints().add(rowConstraints);
+        }
+        for(int i = 0; i < columns; i++){
+            ColumnConstraints columnConstraints = new ColumnConstraints();
+            columnConstraints.setMinWidth(50);
+            columnConstraints.setMaxWidth(50);
+            gridPane.getColumnConstraints().add(columnConstraints);
+
         }
 
         return gridPane;

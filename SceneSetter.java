@@ -60,7 +60,7 @@ public class SceneSetter {
                 this.showMenu();
             }
         });
-        this.gameScene = new Scene(gameBoard.getBoard(), 850, 850);
+        this.gameScene = new Scene(gameBoard.getBoard(), 1000, 800);
         primaryStage.setScene(this.gameScene);
     }
 
