@@ -136,7 +136,7 @@ public class Board {
         ArrayList<GridPane> guiPieces = new ArrayList<>();
             //The loop to make that happen
         for(int i = 0; i > formatting.size(); i++){
-            guiPieces.add(PuzzleSection.setTable(formatting.get(i)))
+            guiPieces.add(PuzzleSection.setTable(formatting.get(i)));
         }
 
         for(int i = 0; i < x; i++){
