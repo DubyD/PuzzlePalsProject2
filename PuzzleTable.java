@@ -171,13 +171,10 @@ public class PuzzleTable {
 
         boolean reply = true;
         //Iterates through the puzzle to find if the entire puzzle is correct or not
-        for(int x = 0; x < this.sizeLength; x++){
-            for(int y = 0; y < this.sizeWidth; y++){
-                reply = puzzlePiece[x][y].isError();
-
-                //Ends the loop if it is already false
-                if(reply == false){
-                    return reply;
+        for(GameCell[] cells : puzzlePiece){
+            for(GameCell cell : cells) {
+                if(!cell.isHeader()){
+                    reply = cell.isError();
                 }
             }
         }
@@ -188,12 +185,12 @@ public class PuzzleTable {
     public String getHint(){
 
         String reply = "";
-        for(int x = 0; x < this.sizeLength; x++) {
-            for (int y = 0; y < this.sizeWidth; y++) {
-                if(puzzlePiece[x][y].isError() == false){
+        for(GameCell[] cells : puzzlePiece) {
+            for (GameCell cell : cells) {
+                if(!cell.isError()){
                     //ends the Loop to save on time
-                    reply = puzzlePiece[x][y].getX() + "x" + puzzlePiece[x][y].getY();
-                    reply = reply + " is supposed to be " + puzzlePiece[x][y].getAnswerKey();
+                    reply = cell.getX() + "x" + cell.getY();
+                    reply = reply + " is supposed to be " + cell.getAnswerKey();
                     return reply;
                 }
             }
