@@ -74,8 +74,9 @@ public class MenuGui {
         this.puzzleSelection.setItems(options);
     }
 
+        //I know Casting is gross but it wouldn't let me compile without it
     public String getSelectedItem(){
-        return this.puzzleSelection.getValue();
+        return (String) this.puzzleSelection.getValue();
     }
 
         //Sends a Button Pointer to apply a Lambda function to the Menu's button
