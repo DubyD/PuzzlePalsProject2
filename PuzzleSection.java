@@ -50,7 +50,7 @@ public class PuzzleSection {
         // Add constraints for uniformity
         for (int i = 0; i < workingSpace.length; i++) {
             RowConstraints rowConstraints = new RowConstraints();
-            rowConstraints.setMinHeight(50);
+            rowConstraints.setMinHeight(100);
             gridPane.getRowConstraints().add(rowConstraints);
         }
 

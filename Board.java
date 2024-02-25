@@ -71,7 +71,8 @@ public class Board {
 
             //Setting up the Puzzle Space
         this.puzzleFormatting = new VBox();
-        this.puzzleFormatting.setAlignment(Pos.CENTER);
+        this.puzzleFormatting.setAlignment(Pos.TOP_CENTER);
+
 
             //Goes next to the puzzleFormatting
         this.clueArea = new TextArea();

@@ -21,38 +21,38 @@ public class Puzzle {
         this.answerKey = PuzzleReader.getAnswerKey();
 
         this.puzzleSize = categories + "x" + dim;
-            //Used for Hint
+        //Used for Hint
         this.categories = categories;
         this.topHeaders = PuzzleReader.getTopData();
         this.leftHeaders = PuzzleReader.getLeftData();
 
         int header = dim + 1;
         if(categories == 3){
-                //top left section
+            //top left section
             gBoard.add(new PuzzleTable(header, header, true));
-                //top right section
+            //top right section
             gBoard.add(new PuzzleTable(header, dim, false));
-                //bottom left section
+            //bottom left section
             gBoard.add(new PuzzleTable(dim, header,false));
         }
         else{
-                //top left section
+            //top left section
             gBoard.add(new PuzzleTable(header, header, true));
-                //top middle section
+            //top middle section
             gBoard.add(new PuzzleTable(header, dim, false));
-                //top right section
+            //top right section
             gBoard.add(new PuzzleTable(header, dim, false));
-                //middle left section
+            //middle left section
             gBoard.add(new PuzzleTable(dim, header,false));
-                //middle middle section
+            //middle middle section
             gBoard.add(new PuzzleTable(dim, dim, false));
-                //bottom left section
+            //bottom left section
             gBoard.add(new PuzzleTable(dim, header,false));
         }
         this.stateStack = new LinkedList<>();
         stateStack.push(gBoard);
 
-            //Private methods to set the rest of the Data in this Puzzle Obj.
+        //Private methods to set the rest of the Data in this Puzzle Obj.
         this.setAnswerKey();
         this.setHeaders(this.topHeaders, "Top");
         this.setHeaders(this.leftHeaders, "Left");
@@ -62,28 +62,28 @@ public class Puzzle {
 
             if(xSide.equals("Top")){
                 if(gBoard.get(i).getColumnHeader() == true){
-                    ArrayList<String> working = headers.get(i);
+                    ArrayList<String> working = headers.get(0);
                     gBoard.get(i).addTopHeader(working);
-
+                    headers.remove(working);
                 }
-            }else{/*
+            }else{
                 if(gBoard.get(i).getRowHeader() == true){
-                    ArrayList<String> working = headers.get(i);
+                    ArrayList<String> working = headers.get(0);
                     gBoard.get(i).addLeftHeader(working);
-
-                }*/
+                    headers.remove(working);
+                }
             }
         }
     }
 
-        //used in the constructor
+    //used in the constructor
     private void setAnswerKey() {
 
 
-            //Separates each answer section to it's respected section of the Puzzle
+        //Separates each answer section to it's respected section of the Puzzle
         for(int number = 0; number > this.answerKey.size(); number++){
 
-                //Separating each Section into each PuzzleTable
+            //Separating each Section into each PuzzleTable
             String[][] answers = this.answerKey.get(number);
             PuzzleTable workingArea = this.gBoard.get(number);
             workingArea.connectingAnswers(answers);
@@ -147,17 +147,17 @@ public class Puzzle {
         return gameWon;
     }
 
-        //Returns a string of where a change occurred
+    //Returns a string of where a change occurred
     public String hint(){
         String reply = "";
         for(int i =0; i < gBoard.size(); i++){
 
-                //Panel where change occurred
+            //Panel where change occurred
             String errorPanel = "";
             if(i == 1) {
                 errorPanel = " Top Left";
             }
-                //Changing Section names for different puzzle sizes
+            //Changing Section names for different puzzle sizes
             if(this.categories == 3){
                 if(i == 2){
                     errorPanel = " Top Right";
@@ -182,7 +182,7 @@ public class Puzzle {
                     errorPanel = " Bottom Left";
                 }
             }
-            reply = gBoard.get(i) + errorPanel + " Section";
+            reply = gBoard.get(i).getHint() + errorPanel + " Section";
         }
         return reply;
     }
