@@ -62,15 +62,15 @@ public class Puzzle {
 
             if(xSide.equals("Top")){
                 if(gBoard.get(i).getColumnHeader() == true){
-                    ArrayList<String> working = headers.get(0);
+                    ArrayList<String> working = headers.get(i);
                     gBoard.get(i).addTopHeader(working);
-                    headers.remove(working);
+
                 }
             }else{
                 if(gBoard.get(i).getRowHeader() == true){
-                    ArrayList<String> working = headers.get(0);
+                    ArrayList<String> working = headers.get(i);
                     gBoard.get(i).addLeftHeader(working);
-                    headers.remove(working);
+
                 }
             }
         }

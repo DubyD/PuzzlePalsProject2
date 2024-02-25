@@ -126,8 +126,8 @@ public class PuzzleTable {
         if(puzzlePiece[row][column].toString().equals("O")){
 
                 //iterating through the puzzle
-            for(int x = 0; x < puzzlePiece[x].length; x++){
-                for(int y = 0; y < puzzlePiece[y].length; y++){
+            for(int x = 0; x < puzzlePiece.length; x++){
+                for(int y = 0; y < puzzlePiece.length; y++){
 
                     if(x == row){
                         if(y == column){

@@ -32,7 +32,11 @@ public class PuzzleSection {
                 if(cell.isHeader() == false) {
                         //This will add a little flare and space between pieces
                     label.setStyle("-fx-border-width: 1; -fx-border-color: black;");
-                    label.setOnMouseClicked(event -> addClickEvent(event, cell, data));
+                    label.setOnMouseClicked(event -> {
+                        int i = cell.getX();
+                        int j = cell.getY();
+                        data.clickCell(i, j);
+                    });
                 }else{
                         //This will add a little flare and space between pieces
                     label.setStyle("-fx-border-width: 2; -fx-border-color: Red;");
