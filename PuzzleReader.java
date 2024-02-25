@@ -32,6 +32,9 @@ public class PuzzleReader{
     private static ArrayList<ArrayList<String>> leftData = new ArrayList<>();
     // same logic as topData
 
+    private static String leftInput;
+    private static String rightInput;
+
 
     private static ArrayList<String> clues = new ArrayList<String>();
     private static ArrayList<String[][]> puzzleSections = new ArrayList<>();
@@ -42,6 +45,8 @@ public class PuzzleReader{
             String[] inputCoordinates=puzInput.split("x");
             // inputCoordinates = i.e  [4,5];
             // This is parsing what the user input.
+            leftInput = inputCoordinates[0];
+            rightInput=inputCoordinates[1];
             while(csvScanner.hasNext()){
                 String lineRead = csvScanner.nextLine();
                 if(counter==0){
@@ -163,7 +168,7 @@ public class PuzzleReader{
             System.out.println("File not found.");
         }
 
-        Puzzle returnPuzzle = new Puzzle(inputCoordinates[0],inputCoordinates[1]);
+        Puzzle returnPuzzle = new Puzzle(Integer.parseInt(leftInput),Integer.parseInt(rightInput));
         return(returnPuzzle);
     }
 
