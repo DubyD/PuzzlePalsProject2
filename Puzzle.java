@@ -11,6 +11,8 @@ public class Puzzle {
     private LinkedList<ArrayList<PuzzleTable>> stateStack;
     private String puzzleSize;
     private int categories;
+    private ArrayList<ArrayList<String>> topHeaders;
+    private ArrayList<ArrayList<String>> leftHeaders;
 
     public Puzzle(int categories, int dim){
 
@@ -21,6 +23,8 @@ public class Puzzle {
         this.puzzleSize = categories + "x" + dim;
             //Used for Hint
         this.categories = categories;
+        this.topHeaders.PuzzleReader.getTopData();
+        this.leftHeaders.PuzzleReader.getLeftData();
 
         int header = dim + 1;
         if(categories == 3){

@@ -199,6 +199,8 @@ public class PuzzleTable {
         return reply;
     }
 
+    public void addRowHeader(String[] )
+
     //Checks if the given object is equal to this obj by comparing puzzlePiece attributes
     @Override
     public boolean equals(Object obj) {
