@@ -33,9 +33,9 @@ public class PuzzleSection {
                         //This will add a little flare and space between pieces
                     label.setStyle("-fx-border-width: 1; -fx-border-color: black;");
 
-                    label.setOnMouseClicked(event ->
-                        this.addClickEvent(event, cell, data,connectingCells);
-                    );
+                    label.setOnMouseClicked(event -> {
+                        addClickEvent(event, cell, data, connectingCells);
+                    });
                 }else{
                         //This will add a little flare and space between pieces
                     label.setStyle("-fx-border-width: 2; -fx-border-color: Red;");
@@ -49,7 +49,7 @@ public class PuzzleSection {
         // Add constraints for uniformity
         for (int i = 0; i < workingSpace.length; i++) {
             RowConstraints rowConstraints = new RowConstraints();
-            rowConstraints.setMinHeight(100);
+            rowConstraints.setMinHeight(50);
             gridPane.getRowConstraints().add(rowConstraints);
         }
 
@@ -63,10 +63,10 @@ public class PuzzleSection {
         grid.clickCell(x,y);
         for(int i = 0; i < guiGrid.length; i++){
             for(int j = 0; j < guiGrid[0].length; j++){
-                guiGrid[i][j].setText(grid[i][j].toString());
+                guiGrid[i][j].setText(grid.getSection()[i][j].toString());
             }
         }
-        
+
     }
 
 }

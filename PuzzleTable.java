@@ -215,27 +215,34 @@ public class PuzzleTable {
         return hasColumnHeaders;
     }
 
+
     //Adding Row Headers
     public void addLeftHeader(ArrayList<String> header){
         //iterates through the Rows to Add the first row
-        for(int i = 0; i < header.size(); i++){
+        //x is needed to make sure the headers are formatted to the first PuzzleTable
+        int x = 0;
+        for(int i = 0; i < this.puzzlePiece.length; i++){
             if(this.bothHeaders == true && i == 0){
 
                 //Skips the Very first section
             }else{
-                puzzlePiece[i][0].setHeaderString(header.get(i));
+                puzzlePiece[i][0].setHeaderString(header.get(x));
+                x++;
             }
         }
     }
     //Adding Top headers
     public void addTopHeader(ArrayList<String> header){
         //iterates through the Columns to Add the first Header
-        for(int i = 0; i < header.size(); i++){
+        //x is needed to make sure the headers are formatted to the first PuzzleTable
+        int x = 0;
+        for(int i = 0; i < this.puzzlePiece[0].length; i++){
             if(this.bothHeaders == true && i == 0){
 
                 //Skips the Very first section
             }else {
-                puzzlePiece[0][i].setHeaderString(header.get(i));
+                puzzlePiece[0][i].setHeaderString(header.get(x));
+                x++;
             }
         }
     }

@@ -33,8 +33,10 @@ public class GameCell {
 
         //Sets the CurVal if a cell with the same row or column is considered the right answer
     public void setCurVal(int curVal) {
-        this.curVal = curVal;
-        this.setStringVal();
+        if(this.header == false) {
+            this.curVal = curVal;
+            this.setStringVal();
+        }
     }
 
         //Used to associate non-header GameCells with Specific Strings
