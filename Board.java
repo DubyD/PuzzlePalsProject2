@@ -64,15 +64,18 @@ public class Board {
         this.firstRow.setLabel("End Game or new Game");
         this.firstRow.setButton("EmergencyExit");
 //-------------------------------------------------------------------------------------------
-        //Goes Next to the puzzleFormatting
+            //Goes Next to the puzzleFormatting
         this.clueArea = new TextArea();
+            //Clears clues if you choose a different puzzle
+            //Sets the clues
         this.setClues();
         this.clueArea.setEditable(false);
 
 
             //Setting up the Puzzle Space
         this.puzzleFormatting = new VBox();
-        this.puzzleFormatting.setAlignment(Pos.TOP_CENTER);
+        this.puzzleFormatting.setAlignment(Pos.TOP_LEFT);
+        this.puzzleFormatting.setSpacing(30);
 
 
             //Formats the Puzzle Space
@@ -120,6 +123,7 @@ public class Board {
     }
 
     private void setClues(){
+        this.clueArea.setText("");
         ArrayList<String> adding = PuzzleReader.getClues();
         String reply = "";
         for(int i = 0; i < adding.size(); i++){
@@ -150,6 +154,7 @@ public class Board {
         for(int i = 0; i < x; i++){
             HBox row = new HBox();
             row.setAlignment(Pos.TOP_LEFT);
+            row.setSpacing(20);
 
             //Adding particular GridPanes to HBox's
             int j = 0;

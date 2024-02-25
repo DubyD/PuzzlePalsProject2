@@ -1,5 +1,7 @@
 //Author WD
 
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -14,6 +16,11 @@ public class PuzzleSection {
         GameCell[][] workingSpace = data.getSection();
             //importing the Backend into a GridPane
         GridPane gridPane = new GridPane();
+            //Setting up the allignment format
+        gridPane.setHgap(20);
+        gridPane.setVgap(20);
+
+
         int columns = workingSpace[0].length;
         Label[][] connectingCells = new Label[workingSpace.length][columns];
 
@@ -42,22 +49,26 @@ public class PuzzleSection {
                     label.setStyle("-fx-border-width: 2; -fx-border-color: Red;");
                 }
 
-                // Add label to the grid pane
+                    // Add label to the grid pane
+                    //and H/V alignment
                 gridPane.add(label, x, y);
+                //gridPane.setHalignment(label, HPos.CENTER);
+                //gridPane.setValignment(label, VPos.CENTER);
+
             }
         }
 
             // Add constraints for uniformity
         for (int i = 0; i < workingSpace.length; i++) {
             RowConstraints rowConstraints = new RowConstraints();
-            rowConstraints.setMinHeight(50);
-            rowConstraints.setMaxHeight(50);
+            rowConstraints.setMinHeight(20);
+            rowConstraints.setMaxHeight(20);
             gridPane.getRowConstraints().add(rowConstraints);
         }
         for(int i = 0; i < columns; i++){
             ColumnConstraints columnConstraints = new ColumnConstraints();
-            columnConstraints.setMinWidth(50);
-            columnConstraints.setMaxWidth(50);
+            columnConstraints.setMinWidth(60);
+            columnConstraints.setMaxWidth(60);
             gridPane.getColumnConstraints().add(columnConstraints);
 
         }

@@ -201,7 +201,11 @@ public class PuzzleReader{
     }
 
     public static ArrayList<String> getClues(){
-        return(clues);
+            //Resets the Clue variable for multiple puzzles
+        ArrayList<String> reply = new ArrayList<>();
+        reply.addAll(clues);
+        clues.removeAll(reply);
+        return(reply);
     }
     public static ArrayList<ArrayList<String>> getTopData(){
         return(topData);

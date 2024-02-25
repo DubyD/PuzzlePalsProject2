@@ -20,6 +20,7 @@ public class Puzzle {
 
         this.answerKey = PuzzleReader.getAnswerKey();
 
+
         this.puzzleSize = categories + "x" + dim;
         //Used for Hint
         this.categories = categories;
@@ -86,6 +87,7 @@ public class Puzzle {
             String[][] answers = this.answerKey.get(number);
             PuzzleTable workingArea = this.gBoard.get(number);
             workingArea.connectingAnswers(answers);
+            System.out.println(answers + "...printing...");
         }
     }
 
