@@ -60,15 +60,16 @@ public class Puzzle {
     private void setHeaders(ArrayList<ArrayList<String>> headers, String xSide){
         for(int i = 0; i < gBoard.size(); i++){
 
+            int numberOfHeaders = headers.size();
             if(xSide.equals("Top")){
                 if(gBoard.get(i).getColumnHeader() == true){
-                    ArrayList<String> working = headers.get(i);
+                    ArrayList<String> working = headers.get(0);
                     gBoard.get(i).addTopHeader(working);
                     headers.remove(working);
                 }
             }else{
                 if(gBoard.get(i).getRowHeader() == true){
-                    ArrayList<String> working = headers.get(i);
+                    ArrayList<String> working = headers.get(0);
                     gBoard.get(i).addLeftHeader(working);
                     headers.remove(working);
                 }
