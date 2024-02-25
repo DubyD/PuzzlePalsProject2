@@ -15,9 +15,12 @@ public class PuzzleReader{
     private static String path3x4 = "./csv/3x4answerKey.csv";
     private static String path4x4 = "./csv/4x4answerKey.csv";
     private static String path4x5 = "./csv/4x5answerKey.csv";
+    private static String path3x5 = "./csv/3x5answerKey.csv";
     private static File file3x4=new File(path3x4);
     private static File file4x4=new File(path4x4);
     private static File file4x5=new File(path4x5);
+    private static File file3x5=new File(path3x5);
+
 
     private static String categories; 
     private static String items_in_categories; 
@@ -129,6 +132,9 @@ public class PuzzleReader{
             }
             if(inputCoordinates[0].equals("4")&&inputCoordinates[1].equals("5")){
                 sectionScanner = new Scanner(file4x5);
+            }
+            if(inputCoordinates[0].equals("3")&&inputCoordinates[1].equals("5")){
+                sectionScanner = new Scanner(file3x5);
             }
 
             // Scanning for answer key.
