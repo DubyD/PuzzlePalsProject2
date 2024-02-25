@@ -197,7 +197,10 @@ public class PuzzleReader{
 
 
     public static ArrayList<String[][]> getAnswerKey(){
-      return(puzzleSections);
+      ArrayList<String[][]> ansKeyReturn = new ArrayList<>();
+      ansKeyReturn.addAll(puzzleSections);
+      puzzleSections.clear();
+      return(ansKeyReturn);
     }
 
     public static ArrayList<String> getClues(){
