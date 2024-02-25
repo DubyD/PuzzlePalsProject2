@@ -95,7 +95,7 @@ public class GameCell {
     public boolean isError(){
 
             //Skips over Header Cells when checking answers
-        if(this.header == true){
+        if(this.header){
             return this.header;
         }
             //Returns whether this Cell is Correct or not

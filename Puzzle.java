@@ -109,25 +109,25 @@ public class Puzzle {
 
      */
 
+    public void updateStack(){
+        stateStack.push(gBoard);
+    }
 
-/*
+
     public boolean clearErrors(){
         boolean noErrors = true;
         for(int i = 0; i < gBoard.size(); i++){
-            if(!gBoard.get(i).equals(answerKey.get(i))){
-                for(int j = 0; j < gBoard.get(i).getSection().length; j++){
-                    for (int k = 0; k < gBoard.get(i).getSection().length; k++){
-                        if(!gBoard.get(i).getCell(j, k).equals(answerKey.get(i).getCell(j, k)) && gBoard.get(i).getCell(j, k).getCurVal() != 0){
-                            noErrors = false;
-                            gBoard.get(i).getCell(j, k).setCurVal(0);
-                        }
+            for(int j = 0; j < gBoard.get(i).getSection().length; j++){
+                for(int k = 0; k < gBoard.get(i).getSection().length; k++){
+                    if(gBoard.get(i).getCell(j, k).isError() && gBoard.get(i).getCell(j, k).toString().equals(" ")){
+                        noErrors = false;
+                        gBoard.get(i).getCell(j, k).setCurVal(0);
+                        gBoard.get(i).getCell(j, k).setHeaderString(" ");
                     }
                 }
             }
         }
-        if(!noErrors){
-            stateStack.push(gBoard);
-        }
+        updateStack();
         return noErrors;
     }
 
@@ -137,7 +137,7 @@ public class Puzzle {
         }
     }
 
- */
+
 
     //checks if the puzzle is finished
     public boolean isFinished(){
