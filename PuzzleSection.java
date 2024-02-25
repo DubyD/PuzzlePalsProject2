@@ -7,7 +7,7 @@ import javafx.scene.layout.RowConstraints;
 
 public class PuzzleSection {
 
-    public static GridPane setTable(PuzzleTable data, int row){
+    public static GridPane setTable(PuzzleTable data){
 
             //Disecting the Backend GameCells to place in Tableview
         GameCell[][] workingSpace = data.getSection();

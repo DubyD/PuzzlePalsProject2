@@ -32,7 +32,7 @@ public class SceneSetter {
         menuSetter.getStartButton().setOnAction(event ->{
                 //Catches if a user hasn't selected a puzzle size
             if(menuSetter.getSelectedItem() != null){
-                showGame(menuSetter.getSelectedItem());
+                this.showGame(menuSetter.getSelectedItem());
             }
         });
         this.menuScene = new Scene(menuSetter.getMenu(), 400, 200);
@@ -49,8 +49,16 @@ public class SceneSetter {
             // creating a pointer to one of the VBox's children (Button)
             // for desired results when clicked
         Board gameBoard = new Board(puzzleSize);
+
+            //Eject button
         gameBoard.getEndButton().setOnAction(event->{
-            showMenu();
+            this.showMenu();
+        });
+            //Check answer Button
+        gameBoard.getCheckButton().setOnAction(event -> {
+            if(gameBoard.getPuzzle().isFinished() == true){
+                this.showMenu();
+            }
         });
         this.gameScene = new Scene(gameBoard.getBoard(), 600, 600);
         primaryStage.setScene(this.gameScene);

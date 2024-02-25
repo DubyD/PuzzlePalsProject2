@@ -181,7 +181,7 @@ public class PuzzleTable {
                 }
             }
         }
-        return reply
+        return reply;
     }
 
     public String getHint(){
@@ -190,9 +190,8 @@ public class PuzzleTable {
         for(int x = 0; x < this.sizeLength; x++) {
             for (int y = 0; y < this.sizeWidth; y++) {
                 if(puzzlePiece[x][y].isError() == false){
-                    reply = puzzlePiece[x][y].getX() + "x" puzzlePiece[x][y].getY();
+                    reply = puzzlePiece[x][y].getX() + "x" + puzzlePiece[x][y].getY();
                     reply = reply + " is supposed to be " + puzzlePiece[x][y].getAnswerKey();
-                    puzzlePiece[x][y].setHint();
                     return reply;
                 }
             }
