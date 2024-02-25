@@ -81,15 +81,40 @@ public class Puzzle {
 
 
         //Separates each answer section to it's respected section of the Puzzle
-        for(int number = 0; number > this.answerKey.size(); number++){
-
+        for(int number = 0; number < this.answerKey.size(); number++){
             //Separating each Section into each PuzzleTable
             String[][] answers = this.answerKey.get(number);
             PuzzleTable workingArea = this.gBoard.get(number);
-            workingArea.connectingAnswers(answers);
-            System.out.println(answers + "...printing...");
+
+            int j;
+            int i = 0;
+
+            if(workingArea.getColumnHeader() == true){
+                j = -1;
+            }else{
+                j = 0;
+            }
+            for(GameCell[] x: workingArea.getSection()){
+                for(GameCell y: x){
+
+                    if(y.isHeader()){
+                      //skips Headers
+                    }else{
+                        System.out.println("working");
+                        String insert = answers[i][j];
+                        y.setAnswer(insert);
+                        i++;
+                    }
+
+                }
+                i = 0;
+                j++;
+
+            }
+
         }
     }
+
 
 
     public ArrayList<PuzzleTable> getgBoard() {
@@ -122,7 +147,6 @@ public class Puzzle {
                     if(gBoard.get(i).getCell(j, k).isError() && gBoard.get(i).getCell(j, k).toString().equals(" ")){
                         noErrors = false;
                         gBoard.get(i).getCell(j, k).setCurVal(0);
-                        gBoard.get(i).getCell(j, k).setHeaderString(" ");
                     }
                 }
             }

@@ -65,11 +65,13 @@ public class GameCell {
         //Sets this GameCell as a Header if needed
     public void setHeader(boolean header) {
         this.header = header;
+
     }
 
         //Sets the String Value of a Header
     public void setHeaderString(String header) {
         this.stringVal = header;
+        this.answerKey = header;
 
     }
 

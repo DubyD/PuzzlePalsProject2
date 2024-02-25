@@ -138,31 +138,7 @@ public class PuzzleTable {
         }
     }
     //------------------------------------------------------------------------------------------------
-    public void connectingAnswers(String[][] answers){
-
-        int x = 0;
-
-        //skips the first row
-        if(this.hasColumnHeaders == true){
-            x = 1;
-        }
-        //Using the filler Variables to connect the answer string to the GameCellArray
-        while(x < this.sizeLength){
-            int y;
-            //Skips the first Column
-            if(this.hasRowHeaders == true){
-                y = 1;
-            }else{
-                y = 0;
-            }
-
-            while(y < this.sizeWidth) {
-                this.puzzlePiece[x][y].setAnswer(answers[x][y]);
-                y++;
-            }
-            x++;
-        }
-    }
+   
 
     //------------------------------------------------------------------------------------------------
     //Comparing the user input with answerKey
@@ -187,12 +163,12 @@ public class PuzzleTable {
         String reply = "";
         for(GameCell[] cells : puzzlePiece) {
             for (GameCell cell : cells) {
-                if(!cell.isError()){
+
                     //ends the Loop to save on time
-                    reply = cell.getX() + "x" + cell.getY();
-                    reply = reply + " is supposed to be " + cell.getAnswerKey();
-                    return reply;
-                }
+                reply = cell.getX() + "x" + cell.getY();
+                reply = reply + " is supposed to be " + cell.getAnswerKey();
+                return reply;
+
             }
         }
         //Puzzle will never interact with this reply.
