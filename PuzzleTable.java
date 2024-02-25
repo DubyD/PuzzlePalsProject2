@@ -13,9 +13,6 @@ public class PuzzleTable {
     private boolean hasColumnHeaders;
     private boolean bothHeaders;
 
-    private int sizeLength;
-    private int sizeWidth;
-
     //For any and all PuzzleTables
     public PuzzleTable(int rows, int columns, boolean bothHeaders){
 
@@ -29,37 +26,20 @@ public class PuzzleTable {
             this.hasRowHeaders = true;
             this.hasColumnHeaders = false;
 
-            //For connecting answers
-            this.sizeWidth = rows - 1;
-            this.sizeLength = columns;
-
         }else if(rows > columns){
 
             this.hasRowHeaders = false;
             this.hasColumnHeaders = true;
-
-            //For connecting answers
-            this.sizeWidth = rows;
-            this.sizeLength = columns - 1;
 
         } else if(bothHeaders){
 
             this.hasRowHeaders = true;
             this.hasColumnHeaders = true;
 
-            //For connecting answers
-            this.sizeWidth = rows - 1;
-            this.sizeLength = columns - 1;
-
         }else{
 
             this.hasRowHeaders = false;
             this.hasColumnHeaders = false;
-
-            //For connecting answers
-            this.sizeWidth = rows;
-            this.sizeLength = columns;
-
         }
 
 
@@ -137,8 +117,6 @@ public class PuzzleTable {
             }
         }
     }
-    //------------------------------------------------------------------------------------------------
-   
 
     //------------------------------------------------------------------------------------------------
     //Comparing the user input with answerKey

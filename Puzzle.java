@@ -86,9 +86,9 @@ public class Puzzle {
             String[][] answers = this.answerKey.get(number);
             PuzzleTable workingArea = this.gBoard.get(number);
 
+                //used for matching the AnswerKey while skipping header GameCells
             int j;
             int i = 0;
-
             if(workingArea.getColumnHeader() == true){
                 j = -1;
             }else{
