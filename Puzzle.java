@@ -66,12 +66,12 @@ public class Puzzle {
                     gBoard.get(i).addTopHeader(working);
 
                 }
-            }else{
+            }else{/*
                 if(gBoard.get(i).getRowHeader() == true){
                     ArrayList<String> working = headers.get(i);
                     gBoard.get(i).addLeftHeader(working);
 
-                }
+                }*/
             }
         }
     }

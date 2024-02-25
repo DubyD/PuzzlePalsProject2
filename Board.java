@@ -76,6 +76,7 @@ public class Board {
             //Goes next to the puzzleFormatting
         this.clueArea = new TextArea();
         this.setClues();
+        this.clueArea.setEditable(false);
 
             //Formats the Puzzle Space
         this.puzzleSectionRows = new ArrayList<HBox>();
