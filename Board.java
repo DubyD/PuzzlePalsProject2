@@ -139,24 +139,29 @@ public class Board {
             //Turning theoretical Data into GUI data
         ArrayList<PuzzleTable> formatting = this.puzzle.getgBoard();
         ArrayList<GridPane> guiPieces = new ArrayList<>();
+
             //The loop to make that happen
         for(int i = 0; i < formatting.size(); i++){
             guiPieces.add(PuzzleSection.setTable(formatting.get(i)));
         }
 
+            //Adding the Rows to Line up the GridPanes Next to each other
         for(int i = 0; i < x; i++){
             HBox row = new HBox();
-
+            row.setAlignment(Pos.TOP_LEFT);
+                //Adding particular GridPanes to HBox's
             while(i < x){
                 GridPane work = guiPieces.get(i);
                 row.getChildren().add(work);
                 guiPieces.remove(work);
                 i++;
             }
+                //Removing GridPanes to not 'Double Book'
             guiPieces.removeAll(row.getChildren());
             this.puzzleSectionRows.add(row);
             x = x - 1;
         }
+            //Adding the HBox's to the Puzzle Space itself
         for(int i = 0; i < this.puzzleSectionRows.size(); i++){
             this.puzzleFormatting.getChildren().add(this.puzzleSectionRows.get(i));
         }

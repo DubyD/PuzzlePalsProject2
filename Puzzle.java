@@ -23,8 +23,8 @@ public class Puzzle {
         this.puzzleSize = categories + "x" + dim;
             //Used for Hint
         this.categories = categories;
-        this.topHeaders.PuzzleReader.getTopData();
-        this.leftHeaders.PuzzleReader.getLeftData();
+        this.topHeaders = PuzzleReader.getTopData();
+        this.leftHeaders = PuzzleReader.getLeftData();
 
         int header = dim + 1;
         if(categories == 3){
@@ -51,11 +51,33 @@ public class Puzzle {
         }
         this.stateStack = new LinkedList<>();
         stateStack.push(gBoard);
+
+            //Private methods to set the rest of the Data in this Puzzle Obj.
         this.setAnswerKey();
+        this.setHeaders(this.topHeaders, "Top");
+        this.setHeaders(this.leftHeaders, "Left");
+    }
+    private void setHeaders(ArrayList<ArrayList<String>> headers, String xSide){
+        for(int i = 0; i < gBoard.size(); i++){
+
+            if(xSide.equals("Top")){
+                if(gBoard.get(i).getColumnHeader() == true){
+                    ArrayList<String> working = headers.get(0);
+                    gBoard.get(i).addTopHeader(working);
+                    headers.remove(working);
+                }
+            }else{
+                if(gBoard.get(i).getRowHeader() == true){
+                    ArrayList<String> working = headers.get(0);
+                    gBoard.get(i).addLeftHeader(working);
+                    headers.remove(working);
+                }
+            }
+        }
     }
 
         //used in the constructor
-    public void setAnswerKey() {
+    private void setAnswerKey() {
 
 
             //Separates each answer section to it's respected section of the Puzzle

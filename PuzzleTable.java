@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -10,6 +11,7 @@ public class PuzzleTable {
 
     private boolean hasRowHeaders;
     private boolean hasColumnHeaders;
+    private boolean bothHeaders;
 
     private int sizeLength;
     private int sizeWidth;
@@ -18,6 +20,8 @@ public class PuzzleTable {
     public PuzzleTable(int rows, int columns, boolean bothHeaders){
 
         this.puzzlePiece = new GameCell[rows][columns];
+
+        this.bothHeaders = bothHeaders;
 
             //Used for formatting the Header Cells
         if(rows < columns){
@@ -199,7 +203,30 @@ public class PuzzleTable {
         return reply;
     }
 
-    public void addRowHeader(String[] )
+        //Adding Row Headers
+    public void addLeftHeader(ArrayList<String> header){
+            //iterates through the Rows to Add the first row
+        for(int i = 0; i < this.sizeLength; i++){
+            if(this.bothHeaders == true){
+
+                //Skips the Very first section
+            }else{
+                puzzlePiece[i][0].setHeaderString(header.get(i));
+            }
+        }
+    }
+        //Adding Top headers
+    public void addTopHeader(ArrayList<String> header){
+            //iterates through the Columns to Add the first Header
+        for(int i = 0; i < this.sizeWidth; i++){
+            if(this.bothHeaders == true){
+
+                //Skips the Very first section
+            }else {
+                puzzlePiece[0][i].setHeaderString(header.get(i));
+            }
+        }
+    }
 
     //Checks if the given object is equal to this obj by comparing puzzlePiece attributes
     @Override

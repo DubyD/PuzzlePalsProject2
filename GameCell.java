@@ -19,7 +19,7 @@ public class GameCell {
             //initializes a GameCell
         this.header = false;
         this.curVal = 0;
-        this.stringVal = " ";
+        this.stringVal = "  ";
         this.x = x;
         this.y = y;
         this.answerKey = "";
@@ -40,7 +40,7 @@ public class GameCell {
         //Used to associate non-header GameCells with Specific Strings
     private void setStringVal(){
         if(this.curVal == 0){
-            this.stringVal = " ";
+            this.stringVal = "  ";
         }
         if(this.curVal == 1){
             this.stringVal = "X";
