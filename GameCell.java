@@ -120,11 +120,6 @@ public class GameCell {
     public String getAnswerKey(){
         return this.answerKey;
     }
-        //Changes a cell based on Hint usage
-    public void setHint(){
-        this.curVal = this.answerVal;
-        this.setStringVal();
-    }
 
     @Override
     public boolean equals(Object o) {

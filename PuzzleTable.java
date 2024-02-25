@@ -192,7 +192,6 @@ public class PuzzleTable {
                 if(puzzlePiece[x][y].isError() == false){
                     reply = puzzlePiece[x][y].getX() + "x" puzzlePiece[x][y].getY();
                     reply = reply + " is supposed to be " + puzzlePiece[x][y].getAnswerKey();
-                    puzzlePiece[x][y].setHint();
                     return reply;
                 }
             }

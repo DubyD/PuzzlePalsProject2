@@ -1,6 +1,7 @@
 //Author WD
 
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -39,6 +40,8 @@ public class Board {
         //ThirdRow Rightside
     private GuiRow checkRow;
 
+    private Label hintAction;
+
         //Saving puzzle size info to share with the rest of the program
 
     private Puzzle puzzle;
@@ -72,6 +75,7 @@ public class Board {
 
             //Goes next to the puzzleFormatting
         this.clueArea = new TextArea();
+        this.setClues();
 
             //Formats the Puzzle Space
         this.puzzleSectionRows = new ArrayList<HBox>();
@@ -90,6 +94,10 @@ public class Board {
         this.hintRow = new GuiRow();
         this.hintRow.setLabel("Do you need a hint?");
         this.hintRow.setButton("'Hint'");
+
+            //FourthRow
+        this.hintAction = new Label();
+        this.setHints();
 
 
 
@@ -110,37 +118,61 @@ public class Board {
 
     }
 
-        //used to set up the Puzzle space
-    private void setSectionRows(int x){
-
-            //Sets up how many Section Rows the Board needs
-            //Sizes are number of matching catagories x items in catagories
-        while(x > 0){
-            HBox row = new HBox();
-            this.puzzleSectionRows.add(row);
-            x = x - 1;
-        }
+    private void setClues(){
+        this.clueArea.setText(PuzzleReader.getClues());
     }
 
 
-    public String getSize(){
-        return this.puzzleSize;
-    }
+    //Used for setting up the GUI
+    private void setPuzzleSize(String size){
 
-    public void setPuzzleSize(String size){
+            //Sets up X to format HBoxs with number of Rows
         String[] pieces = size.split("");
         int x = Integer.parseInt(pieces[0]);
         x = x - 1;
-        this.setSectionRows(x);
+
+            //Turning theoretical Data into GUI data
+        ArrayList<PuzzleTable> formatting = this.puzzle.getgBoard();
+        ArrayList<GridPane> guiPieces = new ArrayList<>();
+            //The loop to make that happen
+        for(int i = 0; i > formatting.size(); i++){
+            guiPieces.add(PuzzleSection.setTable(formatting.get(i)))
+        }
+
+        for(int i = 0; i < x; i++){
+            HBox row = new HBox();
+            //Adds each row
+            while(i < x){
+                row.getChildren().add(guiPieces.get(i));
+                guiPieces.remove(i);
+            }
+            this.puzzleSectionRows.add(row);
+            x = x - 1;
+        }
+
+    }
+
+
+
+    private void setHints(){
+        this.hintRow.getButton().setOnAction(event -> {
+            hintAction.setText(this.puzzle.hint());
+        });
     }
 
         //Exports Button for Lambda function
     public Button getEndButton(){
-        return this.endButton;
+        return this.firstRow.getButton();
     }
 
+        //Returns puzzle so if you finished you can return to a finish screen
+    public Puzzle getPuzzle(){
+        return this.puzzle;
+    }
+
+        //Used for connecting the answer check Button
     public Button getCheckButton(){
-        return this.checkButton;
+        return this.checkRow.getButton();
     }
 
         //Exports the GameScene
