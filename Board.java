@@ -157,7 +157,9 @@ public class Board {
             this.puzzleSectionRows.add(row);
             x = x - 1;
         }
-
+        for(int i = 0; i < this.puzzleSectionRows.size(); i++){
+            this.puzzleFormatting.getChildren().add(this.puzzleSectionRows.get(i));
+        }
     }
 
 
