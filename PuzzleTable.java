@@ -206,7 +206,7 @@ public class PuzzleTable {
         //Adding Row Headers
     public void addLeftHeader(ArrayList<String> header){
             //iterates through the Rows to Add the first row
-        for(int i = 0; i < this.sizeLength; i++){
+        for(int i = 0; i < header.size(); i++){
             if(this.bothHeaders == true){
 
                 //Skips the Very first section
@@ -218,7 +218,7 @@ public class PuzzleTable {
         //Adding Top headers
     public void addTopHeader(ArrayList<String> header){
             //iterates through the Columns to Add the first Header
-        for(int i = 0; i < this.sizeWidth; i++){
+        for(int i = 0; i < header.size(); i++){
             if(this.bothHeaders == true){
 
                 //Skips the Very first section
