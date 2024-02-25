@@ -131,6 +131,6 @@ public class GameCell {
 
     @Override
     public String toString() {
-        return stringVal;
+        return this.stringVal;
     }
 }

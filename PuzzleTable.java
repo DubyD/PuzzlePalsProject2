@@ -173,7 +173,7 @@ public class PuzzleTable {
         //Iterates through the puzzle to find if the entire puzzle is correct or not
         for(int x = 0; x < this.sizeLength; x++){
             for(int y = 0; y < this.sizeWidth; y++){
-                reply = reply && puzzlePiece[x][y].isError();
+                reply = puzzlePiece[x][y].isError();
 
                 //Ends the loop if it is already false
                 if(reply == false){

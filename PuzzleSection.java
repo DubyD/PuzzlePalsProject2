@@ -22,9 +22,8 @@ public class PuzzleSection {
 
                     //Adding a simple string property so that the Grid can Update automatically
                     //this will be easier than adding specialized methods
-                StringProperty cellText = new SimpleStringProperty(cell.toString());
                 Label label = new Label();
-                label.textProperty().bind(cellText);
+                label.setText(cell.toString());
 
 
 
@@ -36,6 +35,7 @@ public class PuzzleSection {
                         int i = cell.getX();
                         int j = cell.getY();
                         data.clickCell(i, j);
+                        label.setText(cell.toString());
                     });
                 }else{
                         //This will add a little flare and space between pieces
