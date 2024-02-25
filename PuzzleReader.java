@@ -203,5 +203,11 @@ public class PuzzleReader{
     public static ArrayList<String> getClues(){
         return(clues);
     }
+    public static ArrayList<ArrayList<String>> getTopData(){
+        return(topData);
+    }
+    public static ArrayList<ArrayList<String>> getLeftData(){
+        return(leftData);
+    }
 }
 //AK
