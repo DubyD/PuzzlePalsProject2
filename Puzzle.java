@@ -62,13 +62,13 @@ public class Puzzle {
 
             if(xSide.equals("Top")){
                 if(gBoard.get(i).getColumnHeader() == true){
-                    ArrayList<String> working = headers.get(0);
+                    ArrayList<String> working = headers.get(i);
                     gBoard.get(i).addTopHeader(working);
                     headers.remove(working);
                 }
             }else{
                 if(gBoard.get(i).getRowHeader() == true){
-                    ArrayList<String> working = headers.get(0);
+                    ArrayList<String> working = headers.get(i);
                     gBoard.get(i).addLeftHeader(working);
                     headers.remove(working);
                 }
@@ -76,7 +76,7 @@ public class Puzzle {
         }
     }
 
-    //used in the constructor
+    //used in the constructor to set each GameCell with each Answer Value
     private void setAnswerKey() {
 
 
@@ -150,39 +150,43 @@ public class Puzzle {
     //Returns a string of where a change occurred
     public String hint(){
         String reply = "";
-        for(int i =0; i < gBoard.size(); i++){
+        for(int i =0; i < gBoard.size(); i++) {
 
-            //Panel where change occurred
-            String errorPanel = "";
-            if(i == 1) {
-                errorPanel = " Top Left";
+            if (gBoard.get(i).isCorrect() == false) {
+
+
+                //Panel where change occurred
+                String errorPanel = "";
+                if (i == 1) {
+                    errorPanel = " Top Left";
+                }
+                //Changing Section names for different puzzle sizes
+                if (this.categories == 3) {
+                    if (i == 2) {
+                        errorPanel = " Top Right";
+                    }
+                    if (i == 3) {
+                        errorPanel = " Bottom left";
+                    }
+                } else {
+                    if (i == 2) {
+                        errorPanel = " Top Middle";
+                    }
+                    if (i == 3) {
+                        errorPanel = " Top Right";
+                    }
+                    if (i == 4) {
+                        errorPanel = " Middle Left";
+                    }
+                    if (i == 5) {
+                        errorPanel = " Middle Middle";
+                    }
+                    if (i == 6) {
+                        errorPanel = " Bottom Left";
+                    }
+                }
+                reply = gBoard.get(i).getHint() + errorPanel + " Section";
             }
-            //Changing Section names for different puzzle sizes
-            if(this.categories == 3){
-                if(i == 2){
-                    errorPanel = " Top Right";
-                }
-                if(i == 3){
-                    errorPanel = " Bottom left";
-                }
-            }else{
-                if(i == 2){
-                    errorPanel = " Top Middle";
-                }
-                if(i == 3){
-                    errorPanel = " Top Right";
-                }
-                if(i == 4){
-                    errorPanel = " Middle Left";
-                }
-                if(i == 5){
-                    errorPanel = " Middle Middle";
-                }
-                if(i == 6){
-                    errorPanel = " Bottom Left";
-                }
-            }
-            reply = gBoard.get(i).getHint() + errorPanel + " Section";
         }
         return reply;
     }
