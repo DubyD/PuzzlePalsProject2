@@ -140,17 +140,20 @@ public class Board {
         ArrayList<PuzzleTable> formatting = this.puzzle.getgBoard();
         ArrayList<GridPane> guiPieces = new ArrayList<>();
             //The loop to make that happen
-        for(int i = 0; i > formatting.size(); i++){
+        for(int i = 0; i < formatting.size(); i++){
             guiPieces.add(PuzzleSection.setTable(formatting.get(i)));
         }
 
         for(int i = 0; i < x; i++){
             HBox row = new HBox();
-            //Adds each row
+
             while(i < x){
-                row.getChildren().add(guiPieces.get(i));
-                guiPieces.remove(i);
+                GridPane work = guiPieces.get(i);
+                row.getChildren().add(work);
+                guiPieces.remove(work);
+                i++;
             }
+            guiPieces.removeAll(row.getChildren());
             this.puzzleSectionRows.add(row);
             x = x - 1;
         }

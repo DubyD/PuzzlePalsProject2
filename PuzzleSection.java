@@ -13,10 +13,11 @@ public class PuzzleSection {
         GameCell[][] workingSpace = data.getSection();
             //importing the Backend into a GridPane
         GridPane gridPane = new GridPane();
+        GameCell[] columns = workingSpace[0];
 
             //iterating the 2D array onto a Grid
-        for (int x = 0; x < workingSpace[x].length; x++) {
-            for (int y = 0; y < workingSpace.length; y++) {
+        for (int x = 0; x < workingSpace.length; x++) {
+            for (int y = 0; y < columns.length; y++) {
                 GameCell cell = workingSpace[x][y];
 
                     //Adding a simple string property so that the Grid can Update automatically
