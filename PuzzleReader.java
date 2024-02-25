@@ -168,11 +168,10 @@ public class PuzzleReader{
     }
 
 
-    public static String[] getAllSizes(){
-        String [] sizesList = new String[4];
+    public static ArrayList<String> getAllSizes(){
+        ArrayList<String> sizesList = new ArrayList<>();
         try{
             Scanner csvScanner=new Scanner(csvFile);
-            int counter=0;
             while(csvScanner.hasNext()){
                 String csvLineRead = csvScanner.nextLine();
                 String[] csvLineSplit = csvLineRead.split(",");
@@ -183,8 +182,7 @@ public class PuzzleReader{
                     continue;
                 }
                 String secondNum=csvLineSplit[1];
-                sizesList[counter]=firstNum.concat("x").concat(secondNum);
-                counter++;
+                sizesList.add(firstNum.concat("x").concat(secondNum));
             }
         }catch(FileNotFoundException e){
             System.out.println("File not found.");
