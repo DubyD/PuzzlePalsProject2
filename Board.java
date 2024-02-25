@@ -119,7 +119,12 @@ public class Board {
     }
 
     private void setClues(){
-        this.clueArea.setText(PuzzleReader.getClues());
+        ArrayList<String> adding = PuzzleReader.getClues();
+        String reply = "";
+        for(int i = 0; i < adding.size(); i++){
+            reply = reply + adding.get(i) + "\n\n";
+        }
+        this.clueArea.setText(reply);
     }
 
 

@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class Puzzle {
     private ArrayList<PuzzleTable> gBoard;
-    private ArrayList<String> answerKey;
+    private String[][] answerKey;
     private LinkedList<ArrayList<PuzzleTable>> stateStack;
     private String puzzleSize;
     private int categories;
@@ -16,7 +16,7 @@ public class Puzzle {
 
         this.gBoard = new ArrayList<>();
 
-        this.answerKey = new ArrayList<>();
+        this.answerKey = String[dim][dim];
 
         this.puzzleSize = categories + "x" + dim;
             //Used for Hint
@@ -57,10 +57,10 @@ public class Puzzle {
         this.answerKey = PuzzleReader.getAnswerKey(answerKey);
 
             //Separates each answer section to it's respected section of the Puzzle
-        for(int number = 0; number > this.answerKey.size(); number++){
+        for(int number = 0; number > this.answerKey.length; number++){
 
                 //Separating each Section into each PuzzleTable
-            String[][] answers = this.answerKey.get(number);
+            String[][] answers = this.answerKey;
             PuzzleTable workingArea = this.gBoard.get(number);
             workingArea.connectingAnswers(answers);
         }
