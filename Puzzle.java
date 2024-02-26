@@ -115,24 +115,9 @@ public class Puzzle {
         }
     }
 
-
-
     public ArrayList<PuzzleTable> getgBoard() {
         return gBoard;
     }
-
-    /*  Not sure if needed. Set each gamecell to have it's answer value
-    public ArrayList<PuzzleTable> getAnswerKey() {
-        return answerKey;
-    }
-
-        Added the click event to each PuzzleTable as not to mess with the other PuzzleTable Values
-    public void clickCell(int piece, int row, int column){
-        gBoard.get(piece).clickCell(row, column);
-        stateStack.push(gBoard);
-    }
-
-     */
 
     public void updateStack(){
         stateStack.push(gBoard);

@@ -139,7 +139,7 @@ public class Board {
         }
         this.clueArea.setText(reply);
     }
-    
+
 
 
     //Used for setting up the GUI
