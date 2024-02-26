@@ -11,6 +11,8 @@ public class SceneSetter {
     private Scene menuScene;
     private Scene gameScene;
 
+    private MenuGui menuSetter;
+
     public SceneSetter(Stage primaryStage){
 
             //A pointer to the primaryStage
@@ -26,7 +28,7 @@ public class SceneSetter {
             // creating custom settings of menuScene components
             // creating a pointer to one of the VBox's children (Button)
             // for desired results when clicked
-        MenuGui menuSetter = new MenuGui();
+        this.menuSetter = new MenuGui();
 
             //Lambda function for menu StartButton
         menuSetter.getStartButton().setOnAction(event ->{
@@ -58,6 +60,8 @@ public class SceneSetter {
         gameBoard.getCheckButton().setOnAction(event -> {
             if(gameBoard.getPuzzle().isFinished() == true){
                 this.showMenu();
+                this.menuSetter.getReplay().setText("You Won!!!!!!!!\n"+
+                                                    "Play Again?");
             }
         });
         this.gameScene = new Scene(gameBoard.getBoard(), 1000, 800);

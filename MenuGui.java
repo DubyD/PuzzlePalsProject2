@@ -23,6 +23,7 @@ public class MenuGui {
 
         // Middle child holding the next 2 variables
     private HBox linedUp;
+    private Label replay;
 
         // The Grand Children
     private Button startButton;
@@ -48,6 +49,8 @@ public class MenuGui {
             // Sets up options
         this.puzzleSelection = new ComboBox<String>();
         this.dropBoxOptions();
+            //If user Won this Label Appears
+        this.replay = new Label();
 
             //adding Grandchildren
         this.linedUp.getChildren().add(this.puzzleSelection);
@@ -56,6 +59,8 @@ public class MenuGui {
             //adding middle children
         this.menuOption.getChildren().add(this.instructions);
         this.menuOption.getChildren().add(this.linedUp);
+        this.menuOption.getChildren().add(this.replay);
+
     }
 
     private void dropBoxOptions(){
@@ -89,6 +94,10 @@ public class MenuGui {
         //Sends the Menu Gui to be added to the Stage
     public VBox getMenu(){
         return this.menuOption;
+    }
+
+    public Label getReplay(){
+        return this.replay;
     }
 
     @Override

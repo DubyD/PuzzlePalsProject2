@@ -1,7 +1,8 @@
 import java.util.Objects;
 
 /**
- * @author Evelyn Totman.
+ * @author Evelyn Totman.,
+ * WD
  */
 public class GameCell {
     private int curVal;

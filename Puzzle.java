@@ -1,5 +1,6 @@
 /**
  * @author Evelyn Totman. Handles backend logic for the game board.
+ * ,WD
  */
 
 import java.util.ArrayList;
