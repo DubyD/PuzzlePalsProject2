@@ -78,14 +78,11 @@ public class PuzzleTable {
         return this.puzzlePiece;
     }
 
-    //Used for Creating and updating the Puzzle
+        //Used for Creating and updating the Puzzle
     public void updatePuzzle(GameCell[][] update){
         this.puzzlePiece = update;
     }
 
-    private void setCells(boolean topHeads, boolean leftHeads){
-        if()
-    }
 
     //used to return the main Game Component and set Headers
     public GameCell getCell(int x, int y){
