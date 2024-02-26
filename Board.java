@@ -39,8 +39,10 @@ public class Board {
 
         //ThirdRow Rightside
     private GuiRow checkRow;
-
+        //FourthRow
     private Label hintAction;
+        //FifthRow
+    private HBox clearErrorRow;
 
         //Saving puzzle size info to share with the rest of the program
 
@@ -52,6 +54,9 @@ public class Board {
 
             //Saving the size of puzzle
         this.puzzle = PuzzleReader.readCSV(puzzleSize);
+            //needed to be initialized before the puzzleSections
+        this.clearErrorRow = new HBox();
+        this.clearErrorRow.setAlignment(Pos.CENTER);
 //-------------------------------------------------------------------------------------------
             //Setting up the GameScene to be exported
         this.gameBoard = new VBox();
@@ -111,6 +116,7 @@ public class Board {
         this.setHints();
 
 //-------------------------------------------------------------------------------------------
+
             //First Row of the Scene
         this.gameBoard.getChildren().add(this.firstRow.getRow());
             //Second Row of the Scene
@@ -119,8 +125,10 @@ public class Board {
         this.gameBoard.getChildren().add(this.rowThree);
             //Fourth Row of the Scene
         this.gameBoard.getChildren().add(this.hintAction);
+        this.gameBoard.getChildren().add(this.clearErrorRow);
 
     }
+
 
     private void setClues(){
         this.clueArea.setText("");
@@ -130,6 +138,10 @@ public class Board {
             reply = reply + adding.get(i) + "\n\n";
         }
         this.clueArea.setText(reply);
+    }
+
+    private void setClear(){
+
     }
 
 
@@ -147,7 +159,11 @@ public class Board {
 
             //The loop to make that happen
         for(int i = 0; i < formatting.size(); i++){
-            guiPieces.add(PuzzleSection.setTable(formatting.get(i)));
+            GuiRow error = new GuiRow();
+            error.setLabel("Clear errors in section " + (i+1));
+            error.setButton("Clear Section " + (i+1));
+            guiPieces.add(PuzzleSection.setTable(formatting.get(i), error.getButton()));
+            this.clearErrorRow.getChildren().add(error.getRow());
         }
 
             //Adding the Rows to Line up the GridPanes Next to each other
@@ -200,6 +216,7 @@ public class Board {
     public Button getCheckButton(){
         return this.checkRow.getButton();
     }
+
 
         //Exports the GameScene
     public VBox getBoard(){

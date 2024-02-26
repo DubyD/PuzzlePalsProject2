@@ -1,16 +1,19 @@
 //Author WD
 
-import javafx.geometry.HPos;
-import javafx.geometry.VPos;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import org.ietf.jgss.GSSManager;
+
+import java.util.List;
 
 public class PuzzleSection {
 
-    public static GridPane setTable(PuzzleTable data){
+    public static GridPane setTable(PuzzleTable data, Button clearError){
 
             //Disecting the Backend GameCells to place in Tableview
         GameCell[][] workingSpace = data.getSection();
@@ -42,18 +45,29 @@ public class PuzzleSection {
                     label.setStyle("-fx-border-width: 2; -fx-border-color: black;");
 
                     label.setOnMouseClicked(event -> {
-                        addClickEvent(event, cell, data, connectingCells);
+                        int i = cell.getX();
+                        int j = cell.getY();
+                        data.clickCell(i,j);
+                        changeGrid(event, data, connectingCells);
+                    });
+
+                    clearError.setOnMouseClicked(event -> {
+                        data.clearErrors();
+                        changeGrid(event, data, connectingCells);
                     });
                 }else{
                         //This will add a little flare and space between pieces
                     label.setStyle("-fx-border-width: 2; -fx-border-color: Red;");
                 }
 
+                    //Adding Clear Button because I don't know how else to Access these Labels
+
+
                     // Add label to the grid pane
                     //and H/V alignment
                 gridPane.add(label, x, y);
-                //gridPane.setHalignment(label, HPos.CENTER);
-                //gridPane.setValignment(label, VPos.CENTER);
+
+
 
             }
         }
@@ -76,11 +90,8 @@ public class PuzzleSection {
         return gridPane;
     }
 
-    private static void addClickEvent(MouseEvent event, GameCell cell, PuzzleTable grid, Label[][] guiGrid) {
+    public static void changeGrid(MouseEvent event, PuzzleTable grid, Label[][] guiGrid) {
 
-        int x = cell.getX();
-        int y = cell.getY();
-        grid.clickCell(x,y);
         for(int i = 0; i < guiGrid.length; i++){
             for(int j = 0; j < guiGrid[0].length; j++){
                 guiGrid[i][j].setText(grid.getSection()[i][j].toString());

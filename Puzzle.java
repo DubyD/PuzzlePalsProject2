@@ -138,22 +138,6 @@ public class Puzzle {
     }
 
 
-    public boolean clearErrors(){
-        boolean noErrors = true;
-        for(int i = 0; i < gBoard.size(); i++){
-            for(int j = 0; j < gBoard.get(i).getSection().length; j++){
-                for(int k = 0; k < gBoard.get(i).getSection().length; k++){
-                    if(gBoard.get(i).getCell(j, k).isError() && gBoard.get(i).getCell(j, k).toString().equals(" ")){
-                        noErrors = false;
-                        gBoard.get(i).getCell(j, k).setCurVal(0);
-                    }
-                }
-            }
-        }
-        updateStack();
-        return noErrors;
-    }
-
     public void undo(){
         if(!stateStack.isEmpty()){
             gBoard = stateStack.pop();

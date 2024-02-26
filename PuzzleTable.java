@@ -73,6 +73,19 @@ public class PuzzleTable {
         this.hasRowHeaders = false;
     }
 
+        //Used to clear errors
+    public void clearErrors(){
+        for(GameCell[] cellString : this.puzzlePiece){
+            for(GameCell cell : cellString){
+                if(cell.isHeader() == false){
+                    if(cell.isError() == false){
+                        cell.setCurVal(0);
+                    }
+                }
+            }
+        }
+    }
+
     //Used to return the entire Section to be iterated over a GridPane
     public GameCell[][] getSection(){
         return this.puzzlePiece;
