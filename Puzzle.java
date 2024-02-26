@@ -181,35 +181,36 @@ public class Puzzle {
 
                 //Panel where change occurred
                 String errorPanel = "";
-                if (i == 1) {
+                if (i == 0) {
                     errorPanel = " Top Left";
                 }
                 //Changing Section names for different puzzle sizes
                 if (this.categories == 3) {
-                    if (i == 2) {
+                    if (i == 1) {
                         errorPanel = " Top Right";
                     }
-                    if (i == 3) {
+                    if (i == 2) {
                         errorPanel = " Bottom left";
                     }
                 } else {
-                    if (i == 2) {
+                    if (i == 1) {
                         errorPanel = " Top Middle";
                     }
-                    if (i == 3) {
+                    if (i == 2) {
                         errorPanel = " Top Right";
                     }
-                    if (i == 4) {
+                    if (i == 3) {
                         errorPanel = " Middle Left";
                     }
-                    if (i == 5) {
+                    if (i == 4) {
                         errorPanel = " Middle Middle";
                     }
-                    if (i == 6) {
+                    if (i == 5) {
                         errorPanel = " Bottom Left";
                     }
                 }
                 reply = gBoard.get(i).getHint() + errorPanel + " Section";
+                return reply;
             }
         }
         return reply;

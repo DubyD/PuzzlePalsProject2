@@ -48,19 +48,19 @@ public class PuzzleTable {
             for(int j = 0; j < columns; j++){
 
                 //added I, J so the Cell can return where it is in space
-                puzzlePiece[i][j] = new GameCell(i, j);
+                this.puzzlePiece[i][j] = new GameCell(i, j);
 
                 //Setting Header booleans will add Header strings later
                 if(this.hasRowHeaders){
-                    puzzlePiece[i][0].setHeader(true);
+                    this.puzzlePiece[i][0].setHeader(true);
                 }
                 //Setting Header booleans, will add Header Strings later
                 if(this.hasColumnHeaders){
-                    puzzlePiece[0][j].setHeader(true);
+                    this.puzzlePiece[0][j].setHeader(true);
                 }
                 //Sets the blank Space so we don't have to add it to .csv
                 if(bothHeaders){
-                    puzzlePiece[0][0].setHeaderString("Header Row");
+                    this.puzzlePiece[0][0].setHeaderString("Header");
                 }
             }
         }
@@ -83,7 +83,9 @@ public class PuzzleTable {
         this.puzzlePiece = update;
     }
 
-
+    private void setCells(boolean topHeads, boolean leftHeads){
+        if()
+    }
 
     //used to return the main Game Component and set Headers
     public GameCell getCell(int x, int y){
@@ -127,8 +129,10 @@ public class PuzzleTable {
         //Iterates through the puzzle to find if the entire puzzle is correct or not
         for(GameCell[] cells : puzzlePiece){
             for(GameCell cell : cells) {
-                if(!cell.isHeader()){
-                    reply = cell.isError();
+
+                reply = cell.isError();
+                if(reply == false){
+                    return reply;
                 }
             }
         }
@@ -141,12 +145,12 @@ public class PuzzleTable {
         String reply = "";
         for(GameCell[] cells : puzzlePiece) {
             for (GameCell cell : cells) {
-
+                if(cell.isError() == false) {
                     //ends the Loop to save on time
-                reply = cell.getX() + "x" + cell.getY();
-                reply = reply + " is supposed to be " + cell.getAnswerKey();
-                return reply;
-
+                    reply = cell.getX() + "x" + cell.getY();
+                    reply = reply + " is supposed to be " + cell.getAnswerKey();
+                    return reply;
+                }
             }
         }
         //Puzzle will never interact with this reply.
@@ -159,11 +163,11 @@ public class PuzzleTable {
 
     //Used for updating the Puzzle
     public boolean getRowHeader(){
-        return hasRowHeaders;
+        return this.hasRowHeaders;
     }
     //Used for updating the Puzzle
     public boolean getColumnHeader(){
-        return hasColumnHeaders;
+        return this.hasColumnHeaders;
     }
 
 
@@ -177,7 +181,7 @@ public class PuzzleTable {
 
                 //Skips the Very first section
             }else{
-                puzzlePiece[i][0].setHeaderString(header.get(x));
+                this.puzzlePiece[i][0].setHeaderString(header.get(x));
                 x++;
             }
         }
@@ -193,11 +197,13 @@ public class PuzzleTable {
                 //Skips the Very first section
             }else {
 
-                puzzlePiece[0][i].setHeaderString(header.get(x));
+                this.puzzlePiece[0][i].setHeaderString(header.get(x));
                 x++;
             }
         }
     }
+
+
     //------------------------------------------------------------------------------------------------
     //Checks if the given object is equal to this obj by comparing puzzlePiece attributes
     @Override

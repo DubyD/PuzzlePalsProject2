@@ -26,6 +26,11 @@ public class GameCell {
         this.answerVal = 0;
     }
 
+    public void setXY(int x, int y){
+        this. x = x;
+        this.y = y;
+    }
+
         //second constructor without param to complete class
     public GameCell(){
         this(0, 0);
@@ -72,6 +77,7 @@ public class GameCell {
     public void setHeaderString(String header) {
         this.stringVal = header;
         this.answerKey = header;
+        this.header = true;
 
     }
 

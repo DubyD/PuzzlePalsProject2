@@ -1,21 +1,21 @@
 category, items_in_categories, top/left, data, headers.../data.. Ahmed Khan
-3,4,top,false,customers,guides
-3,4,left,false,dates,guides
-3,4,top,true,Mr.Ayers,Mr.Drake,Mr.Erickson,Mr.Gallegos,splitter,Inez,Vicki,Willard,Zachary,splitter
-3,4,left,true,July 13,July 14,July 15,July 16,splitter,Inez,Vicki,Willard,Zachary,splitter
+3,4,left,false,customers,guides
+3,4,top,false,dates,guides
+3,4,left,true,Mr.Ayers,Mr.Drake,Mr.Erickson,Mr.Gallegos,splitter,Inez,Vicki,Willard,Zachary,splitter
+3,4,top,true,July 13,July 14,July 15,July 16,splitter,Inez,Vicki,Willard,Zachary,splitter
 -,-,-,-,-
-3,5,top,false,companies,positions
-3,5,left,false,days,positions
-3,5,top,true,Glenn,Kay,Lynne,Olivia,Willie,splitter,basement,garage,kitchen,living room,mud room,splitter
-3,5,left,true,8:00am,9:00am,10:00am,11:00am,12 noon,splitter,basement,garage,kitchen,living room,mud room,splitter
+3,5,left,false,companies,positions
+3,5,top,false,days,positions
+3,5,left,true,Glenn,Kay,Lynne,Olivia,Willie,splitter,basement,garage,kitchen,living room,mud room,splitter
+3,5,top,true,8:00am,9:00am,10:00am,11:00am,12 noon,splitter,basement,garage,kitchen,living room,mud room,splitter
 -,-,-,-,-
-4,4,top,false,sellers,vegetables,towns
-4,4,left,false,prices,towns,vegetables
-4,4,top,true,Antonio,Kari,Lonnie,Nettie,splitter,endives,potatoes,radishes,turnips,splitter,Eddyville,Monroe,Quasqueton,Yorba Linda,splitter
-4,4,left,true,$2.50,$2.60,$2.70,$2.80,splitter,Eddyville,Monroe,Quasqueton,Yorba Linda,splitter,endives,potatoes,radishes,turnips,splitter
+4,4,left,false,sellers,vegetables,towns
+4,4,top,false,prices,towns,vegetables
+4,4,left,true,Antonio,Kari,Lonnie,Nettie,splitter,endives,potatoes,radishes,turnips,splitter,Eddyville,Monroe,Quasqueton,Yorba Linda,splitter
+4,4,top,true,$2.50,$2.60,$2.70,$2.80,splitter,Eddyville,Monroe,Quasqueton,Yorba Linda,splitter,endives,potatoes,radishes,turnips,splitter
 -,-,-,-,-
-4,5,top,false,friends,activities,states
-4,5,left,false,years,states,activities
-4,5,top,true,Bill,Dustin,Lillie,Neal,Zachary,splitter,camping,cycling,hang gliding,hiking,skydiving,splitter,Connecticut,Florida,Illinois,North Carolina,Wyoming,splitter
-4,5,left,true,2001,2002,2003,2004,2005,splitter,Connecticut,Florida,Illinois,North Carolina,Wyoming,splitter,camping,cycling,hang gliding,hiking,skydiving,splitter
+4,5,left,false,friends,activities,states
+4,5,top,false,years,states,activities
+4,5,left,true,Bill,Dustin,Lillie,Neal,Zachary,splitter,camping,cycling,hang gliding,hiking,skydiving,splitter,Connecticut,Florida,Illinois,North Carolina,Wyoming,splitter
+4,5,top,true,2001,2002,2003,2004,2005,splitter,Connecticut,Florida,Illinois,North Carolina,Wyoming,splitter,camping,cycling,hang gliding,hiking,skydiving,splitter
 -,-,-,-,-
