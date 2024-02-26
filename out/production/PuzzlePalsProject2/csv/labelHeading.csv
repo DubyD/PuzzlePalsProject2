@@ -6,8 +6,8 @@ category, items_in_categories, top/left, data, headers.../data.. Ahmed Khan
 -,-,-,-,-
 3,5,top,false,companies,positions
 3,5,left,false,days,positions
-3,5,top,true,Canway,Haytouch,Sancode,Streeter Inc., Zathdrill,splitter,graphic design,sales rep,social media,tech support,web developer,splitter
-3,5,left,true,August 20th,August 21st,August 22nd,August 23rd,August 24th,splitter,graphic design,sales rep,social media,tech support,web developer,splitter
+3,5,top,true,Glenn,Kay,Lynne,Olivia,Willie,splitter,basement,garage,kitchen,living room,mud room,splitter
+3,5,left,true,8:00am,9:00am,10:00am,11:00am,12 noon,splitter,basement,garage,kitchen,living room,mud room,splitter
 -,-,-,-,-
 4,4,top,false,sellers,vegetables,towns
 4,4,left,false,prices,towns,vegetables

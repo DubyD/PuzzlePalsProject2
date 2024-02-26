@@ -99,11 +99,11 @@ public class GameCell {
     public boolean isError(){
 
             //Skips over Header Cells when checking answers
-        if(header){
+        if(this.header){
             return true;
         }
             //Returns whether this Cell is Correct or not
-        return answerKey.equals(stringVal);
+        return this.answerKey.equals(this.stringVal);
     }
 
         //Used to set the answer key to each section of Puzzle

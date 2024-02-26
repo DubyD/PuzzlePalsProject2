@@ -100,7 +100,6 @@ public class Puzzle {
                     if(y.isHeader()){
                       //skips Headers
                     }else{
-                        System.out.println("working");
                         String insert = answers[i][j];
                         y.setAnswer(insert);
                         i++;
